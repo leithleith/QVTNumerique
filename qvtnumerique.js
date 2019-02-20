@@ -1,3 +1,12 @@
+function navigation() {
+	var x = document.getElementById("myTopnav");
+	if (x.className === "topnav") {
+	  x.className += " responsive";
+	} else {
+	  x.className = "topnav";
+	}
+} 
+
 function opentab(evt, tabName)
 {
     var i, tabcontent, tablinks;
@@ -18,10 +27,10 @@ function prechargement()
 	Plotly.setPlotConfig({locale: 'fr'});
 	var dataK = [{ x: [36, 18, 36, 36, 36, 36, 18, 36], y: [0, 0, 0, 0, 18, 0, 0, 18], z: [36, 36, 18, 36, 36, 18, 36, 36], type:'scatter3d', mode:'lines', line: {color: 'green', width:4}, hoverinfo:"name", name: 'Travail Protecteur' }, { x: [0, 0, 0, 0, 0, 0, 18, 0, 0, 18, 36, 18, 36, 36, 0, 18, 36], y: [36, 36, 0, 0, 18, 0, 18, 0, 36, 18, 36, 36, 36, 18, 0, 18, 18], z: [18, 36, 36, 0, 0, 0, 18, 36, 36, 18, 0, 0, 0, 0, 0, 18, 0], type:'scatter3d', mode:'lines', line: {color: 'yellow', width:4}, hoverinfo:"name", name: 'Zone d\'Attention' }, { x: [0, 0, 27, 18, 27, 0, 0, 0, 0], y: [36, 36, 36, 36, 36, 9, 18, 9, 36], z: [18, 36, 0, 0, 0, 0, 0, 0, 36], type:'scatter3d', mode:'lines', line: {color: 'orange', width:4}, hoverinfo:"name", name: 'Zone d\'Alerte' }, { x: [0, 18, 0, 0, 0, 18, 0, 0], y: [36, 36, 18, 36, 36, 36, 18, 36], z: [0, 0, 0, 0, 18, 0, 0, 18], type:'scatter3d', mode:'lines', line: {color: 'red', width:4}, hoverinfo:"name", name: 'Risque pour la Sant\u00e9'}];
 	var dataS = [{ x: [36, 18, 36, 36, 36, 36, 18, 36], y: [0, 0, 0, 0, 18, 0, 0, 18], z: [36, 36, 18, 36, 36, 18, 36, 36], type:'scatter3d', mode:'lines', line: {color: 'green', width:4}, hoverinfo:"name", name: 'Travail Protecteur' }, { x: [0, 0, 0, 0, 0, 0, 18, 0, 0, 18, 36, 18, 36, 36, 0, 18, 36], y: [36, 36, 0, 0, 18, 0, 18, 0, 36, 18, 36, 36, 36, 18, 0, 18, 18], z: [18, 36, 36, 0, 0, 0, 18, 36, 36, 18, 0, 0, 0, 0, 0, 18, 0], type:'scatter3d', mode:'lines', line: {color: 'yellow', width:4}, hoverinfo:"name", name: 'Zone d\'Attention' }, { x: [0, 0, 27, 18, 27, 0, 0, 0, 0], y: [36, 36, 36, 36, 36, 9, 18, 9, 36], z: [18, 36, 0, 0, 0, 0, 0, 0, 36], type:'scatter3d', mode:'lines', line: {color: 'orange', width:4}, hoverinfo:"name", name: 'Zone d\'Alerte' }, { x: [0, 18, 0, 0, 0, 18, 0, 0], y: [36, 36, 18, 36, 36, 36, 18, 36], z: [0, 0, 0, 0, 18, 0, 0, 18], type:'scatter3d', mode:'lines', line: {color: 'red', width:4}, hoverinfo:"name", name: 'Risque pour la Sant\u00e9'}];
-	var layoutkarasek = {autosize: true, dragmode: 'turntable', showlegend: true, legend:{x: 0, y: 0}, width: 600,	height: 600, scene:	{xaxis:{range: [0, 36], title: 'Soutien', tickmode: 'linear', dtick: 9, mirror: true, nticks: 9, type: 'linear', autorange: false, showline: true}, yaxis:{range: [0, 36], title: 'Exigences', tickmode: 'linear', dtick: 9, mirror: true, nticks: 9, type: 'linear', autorange: false, showline: true}, zaxis:{range: [0, 36], title: 'Autonomie',  tickmode: 'linear', dtick: 9, mirror: true, nticks: 9, type: 'linear', autorange: false, showline: true},	camera: {up: {y: 0, x: 0, z: 1}, center: {y: 0, x: 0, z: -0.5}, eye: {y: 2.5, x: 1.5, z: 1}}}, margin:{l: 0, r: 0, b: 0, t: 0, pad: 1}};
-	var layoutsiegrist = {autosize: true, dragmode: 'turntable', showlegend: true, legend:{x: 0, y: 0}, width: 600, height: 600, scene:{xaxis:{range: [0, 36], title: 'Reconnaissance', tickmode: 'linear', dtick: 9, mirror: true, nticks: 9, type: 'linear', autorange: false, showline: true}, yaxis:{range: [0, 36], title: 'Exigences', tickmode: 'linear', dtick: 9, mirror: true, nticks: 9, type: 'linear', autorange: false, showline: true}, zaxis: {range: [0, 36], title: 'Autonomie',  tickmode: 'linear', dtick: 9, mirror: true, nticks: 9, type: 'linear', autorange: false, showline: true}, camera: {up: {y: 0, x: 0, z: 1}, center: {y: 0, x: 0, z: -0.5}, eye: {y: 2.5, x: 1.5, z: 1}}}, margin:{l: 0, r: 0, b: 0, t: 0, pad: 1}};
-	Plotly.newPlot(document.getElementById('karasek'), dataK, layoutkarasek, {modeBarButtonsToRemove: ['toImage', 'sendDataToCloud', 'resetCameraDefault3d', 'resetCameraLastSave3d', 'hoverClosest3d'], displayModeBar: true, displaylogo: false});
-	Plotly.newPlot(document.getElementById('siegrist'), dataS, layoutsiegrist, {modeBarButtonsToRemove: ['toImage', 'sendDataToCloud', 'resetCameraDefault3d', 'resetCameraLastSave3d', 'hoverClosest3d'], displayModeBar: true, displaylogo: false});
+	var layoutkarasek = {autosize: true, dragmode: 'turntable', showlegend: true, legend:{x: 0, y: 0}, scene: {xaxis:{range: [0, 36], title: 'Soutien', tickmode: 'linear', dtick: 9, mirror: true, nticks: 9, type: 'linear', autorange: false, showline: true}, yaxis:{range: [0, 36], title: 'Exigences', tickmode: 'linear', dtick: 9, mirror: true, nticks: 9, type: 'linear', autorange: false, showline: true}, zaxis:{range: [0, 36], title: 'Autonomie',  tickmode: 'linear', dtick: 9, mirror: true, nticks: 9, type: 'linear', autorange: false, showline: true},	camera: {up: {y: 0, x: 0, z: 1}, center: {y: 0, x: 0, z: -0.5}, eye: {y: 2.5, x: 1.5, z: 1}}}, margin:{l: 0, r: 0, b: 0, t: 0, pad: 1}};
+	var layoutsiegrist = {autosize: true, dragmode: 'turntable', showlegend: true, legend:{x: 0, y: 0}, scene: {xaxis:{range: [0, 36], title: 'Reconnaissance', tickmode: 'linear', dtick: 9, mirror: true, nticks: 9, type: 'linear', autorange: false, showline: true}, yaxis:{range: [0, 36], title: 'Exigences', tickmode: 'linear', dtick: 9, mirror: true, nticks: 9, type: 'linear', autorange: false, showline: true}, zaxis: {range: [0, 36], title: 'Autonomie',  tickmode: 'linear', dtick: 9, mirror: true, nticks: 9, type: 'linear', autorange: false, showline: true}, camera: {up: {y: 0, x: 0, z: 1}, center: {y: 0, x: 0, z: -0.5}, eye: {y: 2.5, x: 1.5, z: 1}}}, margin:{l: 0, r: 0, b: 0, t: 0, pad: 1}};
+	Plotly.newPlot(document.getElementById('karasek'), dataK, layoutkarasek, {modeBarButtonsToRemove: ['toImage', 'sendDataToCloud', 'resetCameraDefault3d', 'resetCameraLastSave3d', 'hoverClosest3d'], displayModeBar: true, displaylogo: false, responsive: true});
+	Plotly.newPlot(document.getElementById('siegrist'), dataS, layoutsiegrist, {modeBarButtonsToRemove: ['toImage', 'sendDataToCloud', 'resetCameraDefault3d', 'resetCameraLastSave3d', 'hoverClosest3d'], displayModeBar: true, displaylogo: false, responsive: true});
 }
 
 function saveTextAsFile()
@@ -232,8 +241,6 @@ function graphiques(soutien, reconnaissance, exigences, autonomie, flag, textepo
 	{
 		document.getElementById('siegrist').on('plotly_afterplot', function(){document.getElementById("filesToLoad").value = "";});
     }
-	document.getElementById("boutonGraphiques").style.display = "block";
-	document.getElementById("separateur").style.display = "block";
 }
 
 function purge()
@@ -414,18 +421,32 @@ function traiter()
 	document.getElementById("boutonGraphiques").click();
 }
 
-function loadMultipleFilesAsText()
+function loadMultipleFilesAsText(flag)
 {
-	fileToLoad = document.getElementById("fileToLoad").files;
+	switch (flag)
+	{
+		case true:
+		fileToLoad = document.getElementById("filesToLoad").files;
+		zone = "Collectif";
+		break;
+
+		case false:
+		fileToLoad = document.getElementById("fileToLoad").files;
+		zone = "Individuel";
+		break;
+		
+		default:
+		break;
+	}
 	if (fileToLoad.length > 0)
     {
         if (fileToLoad.length === 1)
         {
-            document.getElementById("Collectif").innerHTML += "<br/>Chargement de : " + fileToLoad[0].name;    
+            document.getElementById(zone).innerHTML += "<br/>Chargement de : " + fileToLoad[0].name;    
         }
         else
         {
-            document.getElementById("Collectif").innerHTML += "<br/>Chargement de " + fileToLoad.length + " fichiers.";
+            document.getElementById(zone).innerHTML += "<br/>Chargement de " + fileToLoad.length + " fichiers.";
         }
 		compteur = 0;
 		for (var n = 0; n < fileToLoad.length; n++)
@@ -677,25 +698,25 @@ function calculer()
 
 function collectif()
 {
-	filesToLoad = document.getElementById("filesToLoad").files;
+	filesToLoad = document.getElementById("filesToLoadc").files;
 	if (filesToLoad.length > 0)
 	{
 		if (filesToLoad.length === 1)
 		{
-			document.getElementById("fileToLoad").value = document.getElementById("filesToLoad").value;
-			document.getElementById("filesToLoad").value = "";
+			document.getElementById("fileToLoadc").value = document.getElementById("filesToLoadc").value;
+			document.getElementById("filesToLoadc").value = "";
 			loadMultipleFilesAsText();
 		}
 		if (filesToLoad.length > 1)
 		{
-			document.getElementById("Collectif").innerHTML += "<br/>Chargement de " + filesToLoad.length + " fichiers.";
+			document.getElementById("Collectifs").innerHTML += "<br/>Chargement de " + filesToLoad.length + " fichiers.";
 			compteur = 0;
 			
 			for (var n = 0; n < filesToLoad.length; n++)
 			{
 				if (!(filesToLoad[n].size > 0 && filesToLoad[n].name.slice(0,17) === "questionnaireQVT_" && filesToLoad[n].name.slice(-4) === ".csv"))
 				{
-					document.getElementById("Collectif").innerHTML += "<br/>" + filesToLoad[n].name + " : fichier invalide !";
+					document.getElementById("Collectifs").innerHTML += "<br/>" + filesToLoad[n].name + " : fichier invalide !";
 				}
 				else
 				{
@@ -740,7 +761,7 @@ function collectif()
 								scoreexigences += tableauA[i][3];
 								break;
 								default:
-								document.getElementById("Collectif").innerHTML += "<br/>" + filesToLoad[compteur].name + " : incomplet";
+								document.getElementById("Collectifs").innerHTML += "<br/>" + filesToLoad[compteur].name + " : incomplet";
 								compteur++;
 								return; 
 							}
@@ -759,7 +780,7 @@ function collectif()
 								scoreautonomie += tableauB[i][3];
 								break;
 								default:
-								document.getElementById("Collectif").innerHTML += "<br/>" + filesToLoad[compteur].name + " : incomplet";
+								document.getElementById("Collectifs").innerHTML += "<br/>" + filesToLoad[compteur].name + " : incomplet";
 								compteur++;
 								return; 
 							}
@@ -778,7 +799,7 @@ function collectif()
 								scoresoutien += tableauC[i][3];
 								break;
 								default:
-								document.getElementById("Collectif").innerHTML += "<br/>" + filesToLoad[compteur].name + " : incomplet";
+								document.getElementById("Collectifs").innerHTML += "<br/>" + filesToLoad[compteur].name + " : incomplet";
 								compteur++;
 								return; 
 							}
@@ -797,7 +818,7 @@ function collectif()
 								scorereconnaissance += tableauD[i][3];
 								break;
 								default:
-								document.getElementById("Collectif").innerHTML += "<br/>" + filesToLoad[compteur].name + " : incomplet";
+								document.getElementById("Collectifs").innerHTML += "<br/>" + filesToLoad[compteur].name + " : incomplet";
 								compteur++;
 								return; 
 							}
@@ -824,13 +845,33 @@ function collectif()
 							Plotly.restyle(document.getElementById('karasek'),style,[0,1,2,3]);
 							Plotly.restyle(document.getElementById('siegrist'),layout);
 							Plotly.restyle(document.getElementById('siegrist'),style,[0,1,2,3]);
-							document.getElementById("boutonGraphiques").style.display = "block";
-							document.getElementById("separateur").style.display = "block";
 						}
 						compteur++;
 					};
 				}
 			}
 		}
+	}
+}
+
+function pleinecran()
+{
+	if (screenfull.enabled)
+	{
+		screenfull.request(document.getElementById('cubes'));
+		document.getElementById("karasek").style.height = "100vh";
+		document.getElementById("karasek").style.width = "50vw";
+		document.getElementById("siegrist").style.height = "100vh";
+		document.getElementById("siegrist").style.width = "50vw";
+		screenfull.on('change', () => {
+			if (!screenfull.isFullscreen)
+			{
+				document.getElementById("karasek").style.height = "50vh";
+				document.getElementById("karasek").style.width = "50%";
+				document.getElementById("siegrist").style.height = "50vh";
+				document.getElementById("siegrist").style.width = "50%";
+				screenfull.off('change', callback);
+			}
+		});
 	}
 }
