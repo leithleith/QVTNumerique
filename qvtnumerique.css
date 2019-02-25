@@ -12,7 +12,7 @@ textarea {font-family: Verdana, Geneva, Tahoma, sans-serif;}
   display: grid;
   grid-template-columns: 50% 50%;
   grid-template-rows: 1min-content;
-  grid-template-areas: "karasek siegrist"
+  grid-template-areas: "Karasek Siegrist"
 }
 
 .Titre { grid-area: Titre; color: darkred; font-weight: bold}
