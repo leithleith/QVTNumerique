@@ -858,20 +858,23 @@ function pleinecran()
 {
 	if (screenfull.enabled)
 	{
-		screenfull.request(document.getElementById('cubes'));
-		document.getElementById("karasek").style.height = "100vh";
-		document.getElementById("karasek").style.width = "50vw";
-		document.getElementById("siegrist").style.height = "100vh";
-		document.getElementById("siegrist").style.width = "50vw";
-		screenfull.on('change', () => {
-			if (!screenfull.isFullscreen)
-			{
-				document.getElementById("karasek").style.height = "50vh";
-				document.getElementById("karasek").style.width = "50%";
-				document.getElementById("siegrist").style.height = "50vh";
-				document.getElementById("siegrist").style.width = "50%";
-				screenfull.off('change', callback);
-			}
-		});
+		if (document.getElementById("Graphiques").style.display === "block")
+		{
+			screenfull.request(document.getElementById('cubes'));
+			document.getElementById("karasek").style.height = "100vh";
+			document.getElementById("karasek").style.width = "50vw";
+			document.getElementById("siegrist").style.height = "100vh";
+			document.getElementById("siegrist").style.width = "50vw";
+			screenfull.on('change', () => {
+				if (!screenfull.isFullscreen)
+				{
+					document.getElementById("karasek").style.height = "50vh";
+					document.getElementById("karasek").style.width = "50%";
+					document.getElementById("siegrist").style.height = "50vh";
+					document.getElementById("siegrist").style.width = "50%";
+					screenfull.off('change', callback);
+				}
+			});
+		}
 	}
 }
