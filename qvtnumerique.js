@@ -1,27 +1,3 @@
-function navigation() {
-	var x = document.getElementById("myTopnav");
-	if (x.className === "topnav") {
-	  x.className += " responsive";
-	} else {
-	  x.className = "topnav";
-	}
-} 
-
-function opentab(evt, tabName)
-{
-    var i, tabcontent, tablinks;
-    tabcontent = document.getElementsByClassName("tabcontent");
-    for (i = 0; i < tabcontent.length; i++) {
-        tabcontent[i].style.display = "none";
-    }
-    tablinks = document.getElementsByClassName("tablinks");
-    for (i = 0; i < tablinks.length; i++) {
-        tablinks[i].className = tablinks[i].className.replace(" active", "");
-    }
-    document.getElementById(tabName).style.display = "block";
-    evt.currentTarget.className += " active";
-}
-
 function prechargement()
 {
 	Plotly.setPlotConfig({locale: 'fr'});
@@ -240,7 +216,9 @@ function graphiques(soutien, reconnaissance, exigences, autonomie, flag, textepo
     if (flag === true)
 	{
 		document.getElementById('siegrist').on('plotly_afterplot', function(){document.getElementById("filesToLoad").value = "";});
-    }
+	}
+	document.getElementById('MenuG').style.display = "block";
+	document.getElementById('cubes').style.display = "grid";
 }
 
 function purge()
@@ -258,7 +236,8 @@ function purgetotale()
     {
         Plotly.purge(document.getElementById('karasek'));
         Plotly.purge(document.getElementById('siegrist'));
-        prechargement();
+		prechargement();
+		document.getElementById("cubes").style.display = "grid";
     }
 }
 
@@ -285,12 +264,12 @@ function effacer()
 	document.getElementById("autonomie").value = "";
 	document.getElementById("exigences").value = "";
 	document.getElementById("soutien").value = "";
-    document.getElementById("reconnaissance").value = "";
+	document.getElementById("reconnaissance").value = "";
+	window.scrollTo(0,0);
 }
 
 function traiter()
 {
-    document.getElementById("filesToLoad").value = "";
     var cocheA = false;
 	var cocheB = false;
 	var cocheC = false;
@@ -360,7 +339,7 @@ function traiter()
         }
         else
         {
-            document.getElementById("A" + (indexpremier) + "3").focus();
+            document.getElementById("A" + (indexpremier) + "3").scrollIntoView(true);
         }
 		return;
 	}
@@ -370,13 +349,13 @@ function traiter()
         window.alert("Questionnaire incomplet : question " + (indexpremier + 1) + " de la partie Autonomie");		
         if (indexpremier === 0)
         {
-            document.getElementById("B123").focus();
-            document.getElementById("A123").focus();
+            document.getElementById("B123").scrollIntoView(true);
+            document.getElementById("A123").scrollIntoView(true);
         }
         else
         {
-            document.getElementById("B123").focus();
-            document.getElementById("B" + (indexpremier) + "3").focus();
+            document.getElementById("B123").scrollIntoView(true);
+            document.getElementById("B" + (indexpremier) + "3").scrollIntoView(true);
         }
 		return;
 	}
@@ -386,13 +365,13 @@ function traiter()
         window.alert("Questionnaire incomplet : question " + (indexpremier + 1) + " de la partie Soutien");		
         if (indexpremier === 0)
         {
-            document.getElementById("C123").focus();
-            document.getElementById("B123").focus();
+            document.getElementById("C123").scrollIntoView(true);
+            document.getElementById("B123").scrollIntoView(true);
         }
         else
         {
-            document.getElementById("C123").focus();
-            document.getElementById("C" + (indexpremier) + "3").focus();
+            document.getElementById("C123").scrollIntoView(true);
+            document.getElementById("C" + (indexpremier) + "3").scrollIntoView(true);
         }
 		return;
 	}
@@ -402,13 +381,13 @@ function traiter()
         window.alert("Questionnaire incomplet : question " + (indexpremier + 1) + " de la partie Reconnaissance");		
         if (indexpremier === 0)
         {
-            document.getElementById("D123").focus();
-            document.getElementById("C123").focus();
+            document.getElementById("D123").scrollIntoView(true);
+            document.getElementById("C123").scrollIntoView(true);
         }
         else
         {
-            document.getElementById("D123").focus();
-            document.getElementById("D" + (indexpremier) + "3").focus();
+            document.getElementById("D123").scrollIntoView(true);
+            document.getElementById("D" + (indexpremier) + "3").scrollIntoView(true);
         }
 		return;
 	}
@@ -418,42 +397,36 @@ function traiter()
     textepointK += "<br>questionnaire saisi directement";
     textepointS += "<br>questionnaire saisi directement";
 	graphiques(document.getElementById('soutien').value, document.getElementById('reconnaissance').value, document.getElementById('exigences').value,document.getElementById('autonomie').value, false,textepointK, textepointS);
-	document.getElementById("boutonGraphiques").click();
+	recommandations(document.getElementById('soutien').value, document.getElementById('reconnaissance').value, document.getElementById('exigences').value,document.getElementById('autonomie').value);
 }
 
 function loadMultipleFilesAsText(flag)
 {
-	switch (flag)
+	if (flag === true)
 	{
-		case true:
 		fileToLoad = document.getElementById("filesToLoad").files;
-		zone = "Collectif";
-		break;
-
-		case false:
+	}
+	if (flag === false)
+	{
 		fileToLoad = document.getElementById("fileToLoad").files;
-		zone = "Individuel";
-		break;
-		
-		default:
-		break;
 	}
 	if (fileToLoad.length > 0)
     {
         if (fileToLoad.length === 1)
         {
-            document.getElementById(zone).innerHTML += "<br/>Chargement de : " + fileToLoad[0].name;    
+			document.getElementById("Messages").innerHTML += "<br/>Chargement de : " + fileToLoad[0].name;
         }
         else
         {
-            document.getElementById(zone).innerHTML += "<br/>Chargement de " + fileToLoad.length + " fichiers.";
-        }
+			document.getElementById("Messages").innerHTML += "<br/>Chargement de " + fileToLoad.length + " fichiers.";
+		}
+		document.getElementById("Messages").style.display = "inline";
 		compteur = 0;
 		for (var n = 0; n < fileToLoad.length; n++)
         {
             if (!(fileToLoad[n].size > 0 && fileToLoad[n].name.slice(0,17) === "questionnaireQVT_" && fileToLoad[n].name.slice(-4) === ".csv"))
 			{
-				document.getElementById("Collectif").innerHTML += "<br/>" + fileToLoad[n].name + " : fichier invalide !";
+				document.getElementById("Messages").innerHTML += "<br/>" + fileToLoad[n].name + " : fichier invalide !";
 			}
             else
             {
@@ -473,23 +446,23 @@ function loadMultipleFilesAsText(flag)
                         if (!(ligneA[i] === "pas d\'accord" || ligneA[i] === "plut\u00f4t pas d\'accord" || ligneA[i] === "plut\u00f4t d\'accord" || ligneA[i] === "d\'accord"))
                         {
                             validationfichier[i] = "A" + (i+1);
-							document.getElementById("Collectif").innerHTML += "<br/>" + fileToLoad[compteur].name + " : incomplet, question A" + (i+1);
+							document.getElementById("Messages").innerHTML += "<br/>" + fileToLoad[compteur].name + " : incomplet, question A" + (i+1);
                             break;
                         }
                         else if (!(ligneB[i] === "pas d\'accord" || ligneB[i] === "plut\u00f4t pas d\'accord" || ligneB[i] === "plut\u00f4t d\'accord" || ligneB[i] === "d\'accord"))
                         {
                             validationfichier[i] = "B" + (i+1);
-                            document.getElementById("Collectif").innerHTML += "<br/>" + fileToLoad[compteur].name + " : incomplet, question B" + (i+1);
+                            document.getElementById("Messages").innerHTML += "<br/>" + fileToLoad[compteur].name + " : incomplet, question B" + (i+1);
                         }
                         else if (!(ligneC[i] === "pas d\'accord" || ligneC[i] === "plut\u00f4t pas d\'accord" || ligneC[i] === "plut\u00f4t d\'accord" || ligneC[i] === "d\'accord"))
                         {
                             validationfichier[i] = "C" + (i+1);
-                            document.getElementById("Collectif").innerHTML += "<br/>" + fileToLoad[compteur].name + " : incomplet, question C" + (i+1);
+                            document.getElementById("Messages").innerHTML += "<br/>" + fileToLoad[compteur].name + " : incomplet, question C" + (i+1);
                         }
                         else if (!(ligneD[i] === "pas d\'accord" || ligneD[i] === "plut\u00f4t pas d\'accord" || ligneD[i] === "plut\u00f4t d\'accord" || ligneD[i] === "d\'accord"))
                         {
                             validationfichier[i] = "D" + (i+1);
-                            document.getElementById("Collectif").innerHTML += "<br/>" + fileToLoad[compteur].name + " : incomplet, question D" + (i+1);
+                            document.getElementById("Messages").innerHTML += "<br/>" + fileToLoad[compteur].name + " : incomplet, question D" + (i+1);
                         }
                         else
                         {
@@ -589,7 +562,13 @@ function loadMultipleFilesAsText(flag)
                             textepointS += '<br>' + fileToLoad[compteur].name;
                             if (fileToLoad.length === 1)
                             {
-                                graphiques(document.getElementById('soutien').value, document.getElementById('reconnaissance').value, document.getElementById('exigences').value, document.getElementById('autonomie').value, false, textepointK, textepointS);
+								graphiques(document.getElementById('soutien').value, document.getElementById('reconnaissance').value, document.getElementById('exigences').value, document.getElementById('autonomie').value, false, textepointK, textepointS);
+								if (flag === false)
+								{
+									recommandations(document.getElementById('soutien').value, document.getElementById('reconnaissance').value, document.getElementById('exigences').value, document.getElementById('autonomie').value);
+									document.getElementById("Questionnaire").style.display = "inline";
+									document.getElementById("Recommandations").scrollIntoView(true);
+								}
                             }
                             else if (compteur < (fileToLoad.length - 1))
                             {
@@ -605,7 +584,6 @@ function loadMultipleFilesAsText(flag)
                         else
                         {
 							validationfichier.sort();
-							document.getElementById("Collectif").innerHTML += " >> <button onclick=\"document.getElementById('boutonIndividuel').click()\">Aller au formulaire</button>";
                             if (parseInt(validationfichier[0].substr(1)) === 1)
                             {
                                 switch (validationfichier[0].charAt(1))
@@ -614,16 +592,16 @@ function loadMultipleFilesAsText(flag)
                                     window.scrollTo(0,0);
                                     break;
                                     case "B":
-                                    document.getElementById("B123").focus();
-                                    document.getElementById("A123").focus();
+                                    document.getElementById("B123").scrollIntoView(true);
+                                    document.getElementById("A123").scrollIntoView(true);
                                     break;
                                     case "C":
-                                    document.getElementById("C123").focus();
-                                    document.getElementById("B123").focus();
+                                    document.getElementById("C123").scrollIntoView(true);
+                                    document.getElementById("B123").scrollIntoView(true);
                                     break;
                                     case "D":
-                                    document.getElementById("D123").focus();
-                                    document.getElementById("C123").focus();
+                                    document.getElementById("D123").scrollIntoView(true);
+                                    document.getElementById("C123").scrollIntoView(true);
                                     break;
                                     default:
                                     break;
@@ -634,21 +612,22 @@ function loadMultipleFilesAsText(flag)
                                 switch (validationfichier[0].charAt(1))
                                 {
                                     case "A":
-                                    document.getElementById("A" + (parseInt(validationfichier[0].substr(1))-1).toString() + "3").focus();
+                                    document.getElementById("A" + (parseInt(validationfichier[0].substr(1))-1).toString() + "3").scrollIntoView(true);
                                     break;
                                     case "B":
-                                    document.getElementById("B" + (parseInt(validationfichier[0].substr(1))-1).toString() + "3").focus();
+                                    document.getElementById("B" + (parseInt(validationfichier[0].substr(1))-1).toString() + "3").scrollIntoView(true);
                                     break;
                                     case "C":
-                                    document.getElementById("C" + (parseInt(validationfichier[0].substr(1))-1).toString() + "3").focus();
+                                    document.getElementById("C" + (parseInt(validationfichier[0].substr(1))-1).toString() + "3").scrollIntoView(true);
                                     break;
                                     case "D":
-                                    document.getElementById("D" + (parseInt(validationfichier[0].substr(1))-1).toString() + "3").focus();
+                                    document.getElementById("D" + (parseInt(validationfichier[0].substr(1))-1).toString() + "3").scrollIntoView(true);
                                     break;
                                     default:
                                     break;
                                 }
-                            }
+							}
+							document.getElementById("Questionnaire").style.display = "inline";
                         }
 					}
 					compteur++;
@@ -709,14 +688,15 @@ function collectif()
 		}
 		if (filesToLoad.length > 1)
 		{
-			document.getElementById("Collectifs").innerHTML += "<br/>Chargement de " + filesToLoad.length + " fichiers.";
+			document.getElementById("Messages").innerHTML += "<br/>Chargement de " + filesToLoad.length + " fichiers.";
+			document.getElementById("Messages").style.display = "inline";
 			compteur = 0;
 			
 			for (var n = 0; n < filesToLoad.length; n++)
 			{
 				if (!(filesToLoad[n].size > 0 && filesToLoad[n].name.slice(0,17) === "questionnaireQVT_" && filesToLoad[n].name.slice(-4) === ".csv"))
 				{
-					document.getElementById("Collectifs").innerHTML += "<br/>" + filesToLoad[n].name + " : fichier invalide !";
+					document.getElementById("Messages").innerHTML += "<br/>" + filesToLoad[n].name + " : fichier invalide !";
 				}
 				else
 				{
@@ -761,7 +741,7 @@ function collectif()
 								scoreexigences += tableauA[i][3];
 								break;
 								default:
-								document.getElementById("Collectifs").innerHTML += "<br/>" + filesToLoad[compteur].name + " : incomplet";
+								document.getElementById("Messages").innerHTML += "<br/>" + filesToLoad[compteur].name + " : incomplet";
 								compteur++;
 								return; 
 							}
@@ -780,7 +760,7 @@ function collectif()
 								scoreautonomie += tableauB[i][3];
 								break;
 								default:
-								document.getElementById("Collectifs").innerHTML += "<br/>" + filesToLoad[compteur].name + " : incomplet";
+								document.getElementById("Messages").innerHTML += "<br/>" + filesToLoad[compteur].name + " : incomplet";
 								compteur++;
 								return; 
 							}
@@ -799,7 +779,7 @@ function collectif()
 								scoresoutien += tableauC[i][3];
 								break;
 								default:
-								document.getElementById("Collectifs").innerHTML += "<br/>" + filesToLoad[compteur].name + " : incomplet";
+								document.getElementById("Messages").innerHTML += "<br/>" + filesToLoad[compteur].name + " : incomplet";
 								compteur++;
 								return; 
 							}
@@ -818,7 +798,7 @@ function collectif()
 								scorereconnaissance += tableauD[i][3];
 								break;
 								default:
-								document.getElementById("Collectifs").innerHTML += "<br/>" + filesToLoad[compteur].name + " : incomplet";
+								document.getElementById("Messages").innerHTML += "<br/>" + filesToLoad[compteur].name + " : incomplet";
 								compteur++;
 								return; 
 							}
@@ -845,6 +825,8 @@ function collectif()
 							Plotly.restyle(document.getElementById('karasek'),style,[0,1,2,3]);
 							Plotly.restyle(document.getElementById('siegrist'),layout);
 							Plotly.restyle(document.getElementById('siegrist'),style,[0,1,2,3]);
+							document.getElementById("cubes").style.display = "grid";
+							document.getElementById("MenuG").style.display = "block";
 						}
 						compteur++;
 					};
@@ -858,7 +840,7 @@ function pleinecran()
 {
 	if (screenfull.enabled)
 	{
-		if (document.getElementById("Graphiques").style.display === "block")
+		if (document.getElementById("cubes").style.display === "grid")
 		{
 			screenfull.request(document.getElementById('cubes'));
 			document.getElementById("karasek").style.height = "100vh";
@@ -877,4 +859,179 @@ function pleinecran()
 			});
 		}
 	}
+}
+
+function recommandations(soutien, reconnaissance, exigences, autonomie)
+{
+	var textetable = "<p><h2><strong>Recommandations :</strong></h2></p><table id='tablerecos'><thead><tr><th><h3>Exigences</h3></th><th><h3>Autonomie</h3></th><th><h3>Soutien</h3></th><th><h3>Reconnaissance</h3></th></tr></thead><tbody>";
+	if (exigences > 18)
+	{
+		textetable += "<td><ul><li><a href=\"https://lenumeriqueautrement.fr/fiches-qvt/organisation-du-travail-son-environnement-et-ses-espaces/teletravail-co-working-nomadisme-mobilite/\" target=\"_fiche\">T&eacute;l&eacute;travail, CoWorking, Nomadisme, Mobilit&eacute;</a></li><li><a href=\"https://lenumeriqueautrement.fr/fiches-qvt/organisation-du-travail-son-environnement-et-ses-espaces/charge-de-travail-et-intensification-du-travail/\" target=\"_fiche\">Charge de travail et intensification du travail</a></li><li><a href=\"https://lenumeriqueautrement.fr/fiches-qvt/temps-de-travail-et-deconnexion/forfait-jours-et-sante-au-travail/\" target=\"_fiche\">Forfait jours et sant&eacute; au travail</a></li><li><a href=\"https://lenumeriqueautrement.fr/fiches-qvt/management-et-formation/accompagnement-et-formation-a-lutilisation-des-outils-numeriques/\" target=\"_fiche\">Accompagnement et formation à l'utilisation des outils num&eacute;riques</a></li><li><a href=\"https://lenumeriqueautrement.fr/fiches-qvt/temps-de-travail-et-deconnexion/disponibilite-et-deconnexion/\" target=\"_fiche\">Disponibilit&eacute; et d&eacute;connexion</a></li><li><a href=\"https://lenumeriqueautrement.fr/fiches-qvt/organisation-du-travail-son-environnement-et-ses-espaces/reconfiguration-et-instabilite-des-organisations-de-travail/\" target=\"_fiche\">Reconfiguration et instabilit&eacute; des organisations de travail</a></li></ul></td>";		
+	}
+	else
+	{
+		textetable += "<td><p><strong>Note : &ecirc;tre attentif au bore-out lorsque les exigences sont trop faibles.</strong></p></td>";
+	}
+	if (autonomie < 19)
+	{
+		textetable += "<td><ul><li><a href=\"https://lenumeriqueautrement.fr/fiches-qvt/management-et-formation/tracabilite-autonomie-et-reconnaissance/\" target=\"_fiche\">Tra&ccedil;abilit&eacute;, autonomie et reconnaissance</a></li><li><a href=\"https://lenumeriqueautrement.fr/fiches-qvt/temps-de-travail-et-deconnexion/equilibre-vie-professionnelle-vie-personnelle/\" target=\"_fiche\">Equilibre vie professionnelle, vie personnelle</a></li><li><a href=\"https://lenumeriqueautrement.fr/fiches-qvt/temps-de-travail-et-deconnexion/outils-numeriques-et-temps-de-travail-masque/\" target=\"_fiche\">Outils num&eacute;riques et temps de travail masqu&eacute;</a></li><li><a href=\"https://lenumeriqueautrement.fr/fiches-qvt/temps-de-travail-et-deconnexion/forfait-jours-et-sante-au-travail/\" target=\"_fiche\">Forfait jours et sant&eacute; au travail</a></li><li><a href=\"https://lenumeriqueautrement.fr/blog/quelle-est-la-realite-du-temps-de-travail-des-cadres/\" target=\"_fiche\">R&eacute;alit&eacute; du temps de travail des cadres</a></li><li><a href=\"https://lenumeriqueautrement.fr/les-outils/le-guide-du-droit-a-la-deconnexion/\" target=\"_fiche\">Guide du droit à la d&eacute;connexion</a></li><li><a href=\"https://lenumeriqueautrement.fr/les-outils/pointeuse-perso-lappli-smartphone-pour-faire-respecter-votre-temps-de-travail/\" target=\"_fiche\">Application Pointeuse Perso</a></li></ul></td>";	
+	}
+	else
+	{
+		textetable += "<td></td>";
+	}
+	if (soutien < 19)
+	{
+		textetable += "<td><ul><li><a href=\"https://lenumeriqueautrement.fr/fiches-qvt/management-et-formation/management-et-soutien/\" target=\"_fiche\">Management et soutien</a></li><li><a href=\"https://lenumeriqueautrement.fr/fiches-qvt/droit-dexpression/droit-dexpression-latitude-decisionnelle-et-conduite-du-changement/\" target=\"_fiche\">Droit d'expression, latitude d&eacute;cisionnelle et conduite du changement</a></li><li><a href=\"https://lenumeriqueautrement.fr/fiches-qvt/management-et-formation/accompagnement-et-formation-a-lutilisation-des-outils-numeriques/\" target=\"_fiche\">Accompagnement et formation &agrave; l'utilisation des outils num&eacute;riques</a></li><li><a href=\"https://lenumeriqueautrement.fr/fiches-qvt/organisation-du-travail-son-environnement-et-ses-espaces/securite-des-donnees-et-des-utilisateurs/\" target=\"_fiche\">S&eacute;curit&eacute; des donn&eacute;es et des utilisateurs</a></li></ul></td>";
+	}
+	else
+	{
+		textetable += "<td></td>";
+	}
+	if (reconnaissance < 19)
+	{
+		textetable += "<td><ul><li><a href=\"https://lenumeriqueautrement.fr/fiches-qvt/management-et-formation/tracabilite-autonomie-et-reconnaissance/\" target=\"_fiche\">Tra&ccedil;abilit&eacute;, autonomie et reconnaissance</a></li></ul></td>";
+	}
+	else
+	{
+		textetable += "<td></td>";
+	}
+	document.getElementById("Recommandations").innerHTML = textetable + "</tr></tbody></table><p></p><p><h2>Graphiques :</h2></p><p></p>";
+	document.getElementById("Questionnaire").style.display = "inline";
+	document.getElementById("Recommandations").style.display = "inline";
+	document.getElementById("MenuP").style.display = "block";
+	document.getElementById("Recommandations").scrollIntoView(true);
+}
+
+function menu(item)
+{
+	switch (item)
+	{
+		case 'apropos':
+			document.getElementById('Apropos').style.display='inline';
+			document.getElementById('Aide').style.display='none';
+			document.getElementById('Questionnaire').style.display='none';
+			document.getElementById('AnalyseI').style.display='none';
+			document.getElementById('AnalyseG').style.display='none';
+			document.getElementById('AnalyseC').style.display='none';
+			document.getElementById('MenuQ').style.display='none';
+			document.getElementById('MenuG').style.display='none';
+			document.getElementById('MenuP').style.display='none';
+			document.getElementById('cubes').style.display='none';
+			document.getElementById('Messages').style.display='none';
+			document.getElementById('Recommandations').style.display='none';
+			break;
+		case 'aide':
+			document.getElementById('Apropos').style.display='none';
+			document.getElementById('Aide').style.display='inline';
+			document.getElementById('Questionnaire').style.display='none';
+			document.getElementById('AnalyseI').style.display='none';
+			document.getElementById('AnalyseG').style.display='none';
+			document.getElementById('AnalyseC').style.display='none';
+			document.getElementById('MenuQ').style.display='none';
+			document.getElementById('MenuG').style.display='none';
+			document.getElementById('MenuP').style.display='none';
+			document.getElementById('cubes').style.display='none';
+			document.getElementById('Messages').style.display='none';
+			document.getElementById('Recommandations').style.display='none';
+			break;
+		case 'questionnaire':
+			effacer();
+			document.getElementById('Apropos').style.display='none';
+			document.getElementById('Aide').style.display='none';
+			document.getElementById('Questionnaire').style.display='inline';
+			document.getElementById('AnalyseI').style.display='none';
+			document.getElementById('AnalyseG').style.display='none';
+			document.getElementById('AnalyseC').style.display='none';
+			document.getElementById('MenuQ').style.display='block';
+			document.getElementById('MenuG').style.display='none';
+			document.getElementById('MenuP').style.display='none';
+			document.getElementById('cubes').style.display='none';
+			document.getElementById('Messages').style.display='none';
+			document.getElementById('Recommandations').style.display='none';
+			break;
+		case 'individu':
+			document.getElementById("fileToLoad").value = "";
+			document.getElementById('Apropos').style.display='none';
+			document.getElementById('Aide').style.display='none';
+			document.getElementById('Questionnaire').style.display='none';
+			document.getElementById('AnalyseI').style.display='inline';
+			document.getElementById('AnalyseG').style.display='none';
+			document.getElementById('AnalyseC').style.display='none';
+			document.getElementById('MenuQ').style.display='none';
+			document.getElementById('MenuG').style.display='none';
+			document.getElementById('MenuP').style.display='none';
+			document.getElementById('cubes').style.display='none';
+			document.getElementById('Messages').style.display='none';
+			document.getElementById('Recommandations').style.display='none';
+			break;
+		case 'groupe':
+			document.getElementById("filesToLoad").value = "";
+			document.getElementById('Apropos').style.display='none';
+			document.getElementById('Aide').style.display='none';
+			document.getElementById('Questionnaire').style.display='none';
+			document.getElementById('AnalyseI').style.display='none';
+			document.getElementById('AnalyseG').style.display='inline';
+			document.getElementById('AnalyseC').style.display='none';
+			document.getElementById('MenuQ').style.display='none';
+			document.getElementById('MenuG').style.display='none';
+			document.getElementById('MenuP').style.display='none';
+			document.getElementById('cubes').style.display='none';
+			document.getElementById('Messages').style.display='none';
+			document.getElementById('Recommandations').style.display='none';
+			break;
+		case 'collectif':
+			document.getElementById("filesToLoadc").value = "";
+			document.getElementById('Apropos').style.display='none';
+			document.getElementById('Aide').style.display='none';
+			document.getElementById('Questionnaire').style.display='none';
+			document.getElementById('AnalyseI').style.display='none';
+			document.getElementById('AnalyseG').style.display='none';
+			document.getElementById('AnalyseC').style.display='inline';
+			document.getElementById('MenuQ').style.display='none';
+			document.getElementById('MenuG').style.display='none';
+			document.getElementById('MenuP').style.display='none';
+			document.getElementById('cubes').style.display='none';
+			document.getElementById('Messages').style.display='none';
+			document.getElementById('Recommandations').style.display='none';
+			break;
+		case 'graphiques':
+			document.getElementById('Apropos').style.display='none';
+			document.getElementById('Aide').style.display='none';
+			document.getElementById('Questionnaire').style.display='none';
+			document.getElementById('AnalyseI').style.display='none';
+			document.getElementById('AnalyseG').style.display='none';
+			document.getElementById('AnalyseC').style.display='none';
+			document.getElementById('MenuQ').style.display='none';
+			document.getElementById('MenuG').style.display='block';
+			document.getElementById('MenuP').style.display='none';
+			document.getElementById('cubes').style.display='grid';
+			document.getElementById('Messages').style.display='none';
+			document.getElementById('Recommandations').style.display='none';
+			break;
+		default:
+			document.getElementById("fileToLoad").value = "";
+			document.getElementById("filesToLoad").value = "";
+			document.getElementById("filesToLoadc").value = "";
+			document.getElementById('Apropos').style.display='inline';
+			document.getElementById('Aide').style.display='none';
+			document.getElementById('Questionnaire').style.display='none';
+			document.getElementById('AnalyseI').style.display='none';
+			document.getElementById('AnalyseG').style.display='none';
+			document.getElementById('AnalyseC').style.display='none';
+			document.getElementById('MenuQ').style.display='none';
+			document.getElementById('MenuG').style.display='none';
+			document.getElementById('MenuP').style.display='none';
+			document.getElementById('cubes').style.display='none';
+			document.getElementById('Messages').style.display='none';
+			document.getElementById('Recommandations').style.display='none';
+	}
+}
+
+function imprime()
+{
+	document.getElementById("Impression").innerHTML = document.getElementById("Questionnaire").innerHTML + document.getElementById("Recommandations").innerHTML + document.getElementById("cubes").innerHTML;
+	console.log(document.getElementById("Impression").innerHTML);
+	print();
+	console.log(document.getElementById("Impression").innerHTML);
 }
