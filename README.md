@@ -1,6 +1,10 @@
 # QVTNumerique
 
-Dépôt GitHub de l'application QVT Numérique, évolution de : https://lenumeriqueautrement.fr/appli/
+Un outil <a href="https://www.ugict.cgt.fr/" target="_ugict">UGICT-CGT</a>, pour l'<a href="https://www.anact.fr/" target="_anact">ANACT</a> et le <a href="https://www.anact.fr/lanact-lance-son-1er-appel-projet-fact-sur-qualite-de-vie-au-travail-et-numerique" target="_fact">FACT</a>, dans le cadre de : <a href="https://lenumeriqueautrement.fr/" taregt="_lna">Construire le Numérique Autrement</a>.
+
+Respectueux de la vie priv&eacute;e et de l'anonymat.<br/>
+Open source sous licence MIT.<br/>
+Biblioth&egrave;ques open source sous licence MIT : <a href="https://github.com/plotly/plotly.js" target="plotly">plotly.js</a> &amp; <a href="https://github.com/sindresorhus/screenfull.js/" target="screenfull">screenfull.js</a>
 
 Fichiers :
 
