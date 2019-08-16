@@ -1,111 +1,36 @@
-body {
-  background-color: white;
-}
-
-.grid-container {
-  display: grid;
-  grid-template-columns: 200px auto;
-  grid-template-rows: 100px auto;
-  grid-template-areas: "Titre Logo" "Menu Affichage";
-  
-}
-
-.Titre {
-  grid-area: Titre;
-  background-color: darkred;
-  color: white;
-  padding: 5px;
-  border: 2px solid darkred;
-  border-radius: 25px;
-  position: fixed;
+body {margin: 0px;border: none;padding: 10px}
+img {border: solid darkred;border-width: 0px 0px 2px 2px;border-radius: 0px 0px 0px 25px;position: fixed;top: 0px;right: 0px}
+h1 {font-weight: bold;border: 2px solid darkred;border-radius: 25px 25px 25px 0px;padding: 10px;margin: 0px;background-color: white;color: darkred}
+h2 {font-weight: bold}
+h3 {font-weight: bold;margin: 0px}
+.Titre {display: block}
+.MenuMain {
+  display: block;
+  position: sticky;
   top: 0px;
-  left: 0px;
+  z-index: 2;
+  padding:5px 0px 5px 0px;
 }
-
-.Logo {
-  grid-area: Logo;
-  background-color: white;
-  text-align: right;
-}
-
-.Apropos, a {
-  color: darkred;
-}
-
-.Menu {
-  display: grid;
-  grid-template-columns: auto;
-  grid-template-rows: auto auto auto auto;
-  grid-template-areas: "MenuMain" "MenuQ" "MenuG" "MenuP";
-  grid-area: Menu;
-  padding-top: 5px;
-  padding-left: 5px;
-  position: fixed;
-  top: 110px;
-  left: 0px;
-}
-
-.MenuMain { grid-area: MenuMain;}
-
-.MenuQ {
-  grid-area: MenuQ;
-  display: none;
-}
-
-.MenuG {
-  grid-area: MenuG;
-  display: none;
-}
-
-.MenuP {
-  grid-area: MenuP;
-  display: none;
-}
-
+.MenuMain ul {list-style-type: none;margin: 0;padding: 0;display: flex}
+.MenuMain ul li {display: block;position: relative;float: left}
+.MenuMain li ul {display: none}
+.MenuMain ul li button {display: block;text-decoration: none;color: darkred;border: 2px solid darkred;border-radius: 0px 25px 0px 0px;background-color: white;white-space: nowrap}
+.MenuMain ul li button:hover { background-color: darkred;color:white}
+.MenuMain li:hover ul {display: block;position: absolute}
+.MenuMain li:hover li {float: none}
+.MenuMain button:disabled, button:disabled:hover {background-color: lightgrey; color: darkred}
+.MenuMain button {font-weight: bold;padding: 10px}
 .Affichage {
-  grid-area: Affichage;
+  display: block;
   background-color: white;
   padding: 10px;
   border: 2px solid darkred;
-  border-radius: 25px;
+  border-radius: 0px 25px 25px 25px;
   z-index: 1;
 }
-
-.boutonmenu {
-  border: 2px solid darkred;
-  border-radius : 15px 50px;
-  background-color: lightgrey;
-  color: darkred;
-  padding: 10px;
-  width:190px;
-}
-
-.boutonmenu:hover {
-  background-color: darkred;
-  color: white;
-}
-
-.boutoncharger {
-  border: 2px solid darkred;
-  border-radius : 15px 50px;
-  background-color: lightgrey;
-  color: darkred;
-  padding: 10px;
-}
-
-.boutoncharger:hover {
-  background-color: darkred;
-  color: white;
-}
-
-.Questionnaire {
-  display: none;
-}
-
-.Impression {
-  display: none;
-}
-
+.Apropos {display: block}
+.Apropos, a {color: darkred}
+.Questionnaire {display: none}
 .Cubes {
   display: grid;
   display: none;
@@ -113,69 +38,43 @@ body {
   grid-template-rows: auto;
   grid-template-areas: "karasek siegrist";
 }
-
-.AnalyseI {
-  display: none;
-}
-
-.AnalyseG {
-  display: none;
-}
-
-.AnalyseC {
-  display: none;
-}
-
-input[type=file] {
-  padding: 10px;
-}
-
-.Messages {
-  display: none;
-  color: darkred;
-}
-
-.Aide {
-  display: none;
-  color: darkred;
-}
-
-.karasek { grid-area: karasek;}
-
-.siegrist { grid-area: siegrist;}
-
-.Recommandations {
-  display: none;
-}
-
-.Recommandations, ul {
-  padding: 20px;
-  list-style-position: inside;
-}
-
-table, thead, tbody, th, tr, td {
+.AnalyseI {display: none}
+.AnalyseG {display: none}
+.AnalyseC {display: none}
+input[type=file] {font-weight: bold;padding: 10px;background-color:white;color:darkred;border:2px solid darkred;border-radius:25px}
+input[type=file]:hover {background-color:darkred;color:white}
+.boutoncharger {font-weight: bold;background-color:white;color:darkred;border:2px solid darkred;border-radius:25px;padding:10px}
+.boutoncharger:hover {background-color:darkred;color:white;padding:10px}
+.Messages {display: none;color: darkred}
+.Aide {display: none;color: darkred}
+.karasek { grid-area: karasek}
+.siegrist { grid-area: siegrist}
+.Recommandations {display: none}
+table {
+  table-layout: fixed;
+  width: 100%;
   border: 1px solid black;
   vertical-align: top;
   border-collapse: collapse;
   padding: 10px;
 }
-
-table {
-  table-layout: fixed;
-  width: 100%;
+th {
+  border: 1px solid black;
+  vertical-align: top;
+  border-collapse: collapse;
+  padding: 10px;
 }
-
 td {
-  width: 25%;
+  border: 1px solid black;
+  vertical-align: top;
+  border-collapse: collapse;
+  padding: 10px;
+  width: 25%
 }
-
+td ul {display: inline; list-style-type: disc;padding: 10px;list-style-position: inside}
 @media print {
-  body * {
-    visibility: hidden;
-  }
-  .Affichage, .Affichage * {
-    visibility: visible;
-  }
+  body * {visibility: hidden;}
+  .Affichage, .Affichage * {visibility: visible;}
   .Affichage {
     position: absolute;
     left: 0;
@@ -187,10 +86,11 @@ td {
     visibility: hidden;
     display: none;
   }
-  .Messages {
-    visibility: hidden;
-  }
-  table {
-    break-inside: avoid;
-  }
+  .Messages {visibility: hidden;}
+  table {break-inside: avoid;}
+}
+@media screen and (max-width: 800px) {
+.Cubes {display: block;display: none}
+.karasek {display:block}
+.siegrist {display:block}
 }

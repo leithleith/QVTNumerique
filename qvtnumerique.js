@@ -8,7 +8,6 @@ function prechargement()
 	Plotly.newPlot(document.getElementById('karasek'), dataK, layoutkarasek, {modeBarButtonsToRemove: ['toImage', 'sendDataToCloud', 'resetCameraDefault3d', 'resetCameraLastSave3d', 'hoverClosest3d'], displayModeBar: true, displaylogo: false, responsive: true});
 	Plotly.newPlot(document.getElementById('siegrist'), dataS, layoutsiegrist, {modeBarButtonsToRemove: ['toImage', 'sendDataToCloud', 'resetCameraDefault3d', 'resetCameraLastSave3d', 'hoverClosest3d'], displayModeBar: true, displaylogo: false, responsive: true});
 }
-
 function saveTextAsFile()
 {
     var textToSave = "";
@@ -148,12 +147,10 @@ function saveTextAsFile()
     document.body.appendChild(downloadLink);
     downloadLink.click();
 }
- 
 function destroyClickedElement(event)
 {
     document.body.removeChild(event.target);
 }
-
 function sauveimages()
 {
     var timestamp = Date.now();
@@ -162,7 +159,6 @@ function sauveimages()
     Plotly.downloadImage(document.getElementById('karasek'), {format: 'png', width: 800, height: 800, filename: filenameK});
     Plotly.downloadImage(document.getElementById('siegrist'), {format: 'png', width: 800, height: 800, filename: filenameS});
 }
-
 function positionpoint(pointx, exigences, autonomie)
 {
 	var matriceverte = [[-18,0,18], [0,18,18], [pointx - 36, exigences, autonomie - 18]];
@@ -200,7 +196,6 @@ function positionpoint(pointx, exigences, autonomie)
 	}
 	return "";
 }
-
 function graphiques(soutien, reconnaissance, exigences, autonomie, flag, textepointK, textepointS)
 {
 	var updateK = { x:[soutien], y:[exigences], z:[autonomie], type:'scatter3d', hoverinfo:'x+y+z+text', text: textepointK, marker:{}};
@@ -217,10 +212,10 @@ function graphiques(soutien, reconnaissance, exigences, autonomie, flag, textepo
 	{
 		document.getElementById('siegrist').on('plotly_afterplot', function(){document.getElementById("filesToLoad").value = "";});
 	}
-	document.getElementById('MenuG').style.display = "block";
+	changeclass("boutonQ",true);
+	changeclass("boutonG",true);
 	document.getElementById('cubes').style.display = "grid";
 }
-
 function purge()
 {
     if(document.getElementById('karasek').data.length > 4 && document.getElementById('siegrist').data.length > 4)
@@ -229,7 +224,6 @@ function purge()
         Plotly.deleteTraces(document.getElementById('siegrist'), -1);
     }
 }
-
 function purgetotale()
 {
     if(document.getElementById('karasek').data.length > 4 && document.getElementById('siegrist').data.length > 4)
@@ -240,7 +234,6 @@ function purgetotale()
 		document.getElementById("cubes").style.display = "grid";
     }
 }
-
 function effacer()
 {
     for (var x = 1; x < 13; x++)
@@ -267,7 +260,6 @@ function effacer()
 	document.getElementById("reconnaissance").value = "";
 	window.scrollTo(0,0);
 }
-
 function traiter()
 {
     var cocheA = false;
@@ -399,7 +391,6 @@ function traiter()
 	graphiques(document.getElementById('soutien').value, document.getElementById('reconnaissance').value, document.getElementById('exigences').value,document.getElementById('autonomie').value, false,textepointK, textepointS);
 	recommandations(document.getElementById('soutien').value, document.getElementById('reconnaissance').value, document.getElementById('exigences').value,document.getElementById('autonomie').value);
 }
-
 function loadMultipleFilesAsText(flag)
 {
 	if (flag === true)
@@ -636,7 +627,6 @@ function loadMultipleFilesAsText(flag)
 		}
     }
 }
-
 function calculer()
 {
     var exigences = 0;
@@ -674,168 +664,158 @@ function calculer()
 	document.getElementById('soutien').value = soutien;
 	document.getElementById('reconnaissance').value = reconnaissance;
 }
-
 function collectif()
 {
 	filesToLoad = document.getElementById("filesToLoadc").files;
 	if (filesToLoad.length > 0)
 	{
-		if (filesToLoad.length === 1)
+		document.getElementById("Messages").innerHTML += "<br/>Chargement de " + filesToLoad.length + " fichiers.";
+		document.getElementById("Messages").style.display = "inline";
+		compteur = 0;
+		
+		for (var n = 0; n < filesToLoad.length; n++)
 		{
-			document.getElementById("fileToLoadc").value = document.getElementById("filesToLoadc").value;
-			document.getElementById("filesToLoadc").value = "";
-			loadMultipleFilesAsText();
-		}
-		if (filesToLoad.length > 1)
-		{
-			document.getElementById("Messages").innerHTML += "<br/>Chargement de " + filesToLoad.length + " fichiers.";
-			document.getElementById("Messages").style.display = "inline";
-			compteur = 0;
-			
-			for (var n = 0; n < filesToLoad.length; n++)
+			if (!(filesToLoad[n].size > 0 && filesToLoad[n].name.slice(0,17) === "questionnaireQVT_" && filesToLoad[n].name.slice(-4) === ".csv"))
 			{
-				if (!(filesToLoad[n].size > 0 && filesToLoad[n].name.slice(0,17) === "questionnaireQVT_" && filesToLoad[n].name.slice(-4) === ".csv"))
+				document.getElementById("Messages").innerHTML += "<br/>" + filesToLoad[n].name + " : fichier invalide !";
+			}
+			else
+			{
+				soutien = [];
+				reconnaissance = [];
+				exigences = [];
+				autonomie = [];
+				texteK = [];
+				texteS = [];
+				var fileReader = new FileReader();
+				fileReader.readAsText(filesToLoad[n], "UTF-8");
+				fileReader.onload = function(fileLoadedEvent) 
 				{
-					document.getElementById("Messages").innerHTML += "<br/>" + filesToLoad[n].name + " : fichier invalide !";
-				}
-				else
-				{
-					soutien = [];
-					reconnaissance = [];
-					exigences = [];
-					autonomie = [];
-					texteK = [];
-					texteS = [];
-					var fileReader = new FileReader();
-					fileReader.readAsText(filesToLoad[n], "UTF-8");
-					fileReader.onload = function(fileLoadedEvent) 
+					var textFromFileLoaded = fileLoadedEvent.target.result;
+					var lignes = textFromFileLoaded.split("\n");
+					var ligneA = lignes[0].split(",");
+					var ligneB = lignes[1].split(",");
+					var ligneC = lignes[2].split(",");
+					var ligneD = lignes[3].split(",");
+					var tableauA = [[0,1,2,3],[0,1,2,3],[3,2,1,0],[0,1,2,3],[0,1,2,3],[0,1,2,3],[0,1,2,3],[0,1,2,3],[3,2,1,0],[3,2,1,0],[0,1,2,3],[0,1,2,3]];
+					var tableauB = [[0,1,2,3],[0,1,2,3],[0,1,2,3],[0,1,2,3],[3,2,1,0],[0,1,2,3],[0,1,2,3],[0,1,2,3],[0,1,2,3],[3,2,1,0],[0,1,2,3],[3,2,1,0]];
+					var tableauC = [[0,1,2,3],[0,1,2,3],[0,1,2,3],[0,1,2,3],[0,1,2,3],[0,1,2,3],[0,1,2,3],[0,1,2,3],[0,1,2,3],[0,1,2,3],[0,1,2,3],[0,1,2,3]];
+					var tableauD = [[0,1,2,3],[0,1,2,3],[0,1,2,3],[0,1,2,3],[3,2,1,0],[0,1,2,3],[0,1,2,3],[0,1,2,3],[0,1,2,3],[0,1,2,3],[0,1,2,3],[0,1,2,3]];
+					var scoreexigences = 0;
+					var scoreautonomie = 0;
+					var scoresoutien = 0;
+					var scorereconnaissance = 0;
+					for (var i = 0; i < 12; i++)
 					{
-						var textFromFileLoaded = fileLoadedEvent.target.result;
-						var lignes = textFromFileLoaded.split("\n");
-						var ligneA = lignes[0].split(",");
-						var ligneB = lignes[1].split(",");
-						var ligneC = lignes[2].split(",");
-						var ligneD = lignes[3].split(",");
-						var tableauA = [[0,1,2,3],[0,1,2,3],[3,2,1,0],[0,1,2,3],[0,1,2,3],[0,1,2,3],[0,1,2,3],[0,1,2,3],[3,2,1,0],[3,2,1,0],[0,1,2,3],[0,1,2,3]];
-						var tableauB = [[0,1,2,3],[0,1,2,3],[0,1,2,3],[0,1,2,3],[3,2,1,0],[0,1,2,3],[0,1,2,3],[0,1,2,3],[0,1,2,3],[3,2,1,0],[0,1,2,3],[3,2,1,0]];
-						var tableauC = [[0,1,2,3],[0,1,2,3],[0,1,2,3],[0,1,2,3],[0,1,2,3],[0,1,2,3],[0,1,2,3],[0,1,2,3],[0,1,2,3],[0,1,2,3],[0,1,2,3],[0,1,2,3]];
-						var tableauD = [[0,1,2,3],[0,1,2,3],[0,1,2,3],[0,1,2,3],[3,2,1,0],[0,1,2,3],[0,1,2,3],[0,1,2,3],[0,1,2,3],[0,1,2,3],[0,1,2,3],[0,1,2,3]];
-						var scoreexigences = 0;
-						var scoreautonomie = 0;
-						var scoresoutien = 0;
-						var scorereconnaissance = 0;
-						for (var i = 0; i < 12; i++)
+						switch (ligneA[i])
 						{
-							switch (ligneA[i])
-							{
-								case "pas d\'accord":
-								scoreexigences += tableauA[i][0];
-								break;
-								case "plut\u00f4t pas d\'accord":
-								scoreexigences += tableauA[i][1];
-								break;
-								case "plut\u00f4t d\'accord":
-								scoreexigences += tableauA[i][2];
-								break;
-								case "d\'accord":
-								scoreexigences += tableauA[i][3];
-								break;
-								default:
-								document.getElementById("Messages").innerHTML += "<br/>" + filesToLoad[compteur].name + " : incomplet";
-								compteur++;
-								return; 
-							}
-							switch (ligneB[i])
-							{
-								case "pas d\'accord":
-								scoreautonomie += tableauB[i][0];
-								break;
-								case "plut\u00f4t pas d\'accord":
-								scoreautonomie += tableauB[i][1];
-								break;
-								case "plut\u00f4t d\'accord":
-								scoreautonomie += tableauB[i][2];
-								break;
-								case "d\'accord":
-								scoreautonomie += tableauB[i][3];
-								break;
-								default:
-								document.getElementById("Messages").innerHTML += "<br/>" + filesToLoad[compteur].name + " : incomplet";
-								compteur++;
-								return; 
-							}
-							switch (ligneC[i])
-							{
-								case "pas d\'accord":
-								scoresoutien += tableauC[i][0];
-								break;
-								case "plut\u00f4t pas d\'accord":
-								scoresoutien += tableauC[i][1];
-								break;
-								case "plut\u00f4t d\'accord":
-								scoresoutien += tableauC[i][2];
-								break;
-								case "d\'accord":
-								scoresoutien += tableauC[i][3];
-								break;
-								default:
-								document.getElementById("Messages").innerHTML += "<br/>" + filesToLoad[compteur].name + " : incomplet";
-								compteur++;
-								return; 
-							}
-							switch (ligneD[i])
-							{
-								case "pas d\'accord":
-								scorereconnaissance += tableauD[i][0];
-								break;
-								case "plut\u00f4t pas d\'accord":
-								scorereconnaissance += tableauD[i][1];
-								break;
-								case "plut\u00f4t d\'accord":
-								scorereconnaissance += tableauD[i][2];
-								break;
-								case "d\'accord":
-								scorereconnaissance += tableauD[i][3];
-								break;
-								default:
-								document.getElementById("Messages").innerHTML += "<br/>" + filesToLoad[compteur].name + " : incomplet";
-								compteur++;
-								return; 
-							}
+							case "pas d\'accord":
+							scoreexigences += tableauA[i][0];
+							break;
+							case "plut\u00f4t pas d\'accord":
+							scoreexigences += tableauA[i][1];
+							break;
+							case "plut\u00f4t d\'accord":
+							scoreexigences += tableauA[i][2];
+							break;
+							case "d\'accord":
+							scoreexigences += tableauA[i][3];
+							break;
+							default:
+							document.getElementById("Messages").innerHTML += "<br/>" + filesToLoad[compteur].name + " : incomplet";
+							compteur++;
+							return; 
 						}
-						soutien[compteur] = scoresoutien;
-						reconnaissance[compteur] = scorereconnaissance;
-						exigences[compteur] = scoreexigences;
-						autonomie[compteur] = scoreautonomie;
-						var textepointK = positionpoint(scoresoutien,scoreexigences,scoreautonomie);
-						var textepointS = positionpoint(scorereconnaissance,scoreexigences,scoreautonomie);
-						textepointK += '<br>' + filesToLoad[compteur].name;
-						textepointS += '<br>' + filesToLoad[compteur].name;
-						texteK[compteur] = textepointK;
-						texteS[compteur] = textepointS;
-						if (compteur === (filesToLoad.length - 1))
+						switch (ligneB[i])
 						{
-							var updateK = { x: soutien, y: exigences, z: autonomie, type:'scatter3d', mode:'markers', hoverinfo:'x+y+z+text', text: texteK, marker:{symbol: 'diamond', size: 4, opacity: 0.5} };
-							var updateS = { x: reconnaissance, y: exigences, z: autonomie, type:'scatter3d', mode:'markers', hoverinfo:'x+y+z+text', text: texteS, marker:{symbol: 'diamond', size: 4, opacity: 0.5}};
-							var layout = {showlegend: false};
-							var style = {showlegend: true};
-							Plotly.addTraces(document.getElementById('karasek'), updateK);
-							Plotly.addTraces(document.getElementById('siegrist'), updateS);
-							Plotly.restyle(document.getElementById('karasek'),layout);
-							Plotly.restyle(document.getElementById('karasek'),style,[0,1,2,3]);
-							Plotly.restyle(document.getElementById('siegrist'),layout);
-							Plotly.restyle(document.getElementById('siegrist'),style,[0,1,2,3]);
-							document.getElementById("cubes").style.display = "grid";
-							document.getElementById("MenuG").style.display = "block";
+							case "pas d\'accord":
+							scoreautonomie += tableauB[i][0];
+							break;
+							case "plut\u00f4t pas d\'accord":
+							scoreautonomie += tableauB[i][1];
+							break;
+							case "plut\u00f4t d\'accord":
+							scoreautonomie += tableauB[i][2];
+							break;
+							case "d\'accord":
+							scoreautonomie += tableauB[i][3];
+							break;
+							default:
+							document.getElementById("Messages").innerHTML += "<br/>" + filesToLoad[compteur].name + " : incomplet";
+							compteur++;
+							return; 
 						}
-						compteur++;
-					};
-				}
+						switch (ligneC[i])
+						{
+							case "pas d\'accord":
+							scoresoutien += tableauC[i][0];
+							break;
+							case "plut\u00f4t pas d\'accord":
+							scoresoutien += tableauC[i][1];
+							break;
+							case "plut\u00f4t d\'accord":
+							scoresoutien += tableauC[i][2];
+							break;
+							case "d\'accord":
+							scoresoutien += tableauC[i][3];
+							break;
+							default:
+							document.getElementById("Messages").innerHTML += "<br/>" + filesToLoad[compteur].name + " : incomplet";
+							compteur++;
+							return; 
+						}
+						switch (ligneD[i])
+						{
+							case "pas d\'accord":
+							scorereconnaissance += tableauD[i][0];
+							break;
+							case "plut\u00f4t pas d\'accord":
+							scorereconnaissance += tableauD[i][1];
+							break;
+							case "plut\u00f4t d\'accord":
+							scorereconnaissance += tableauD[i][2];
+							break;
+							case "d\'accord":
+							scorereconnaissance += tableauD[i][3];
+							break;
+							default:
+							document.getElementById("Messages").innerHTML += "<br/>" + filesToLoad[compteur].name + " : incomplet";
+							compteur++;
+							return; 
+						}
+					}
+					soutien[compteur] = scoresoutien;
+					reconnaissance[compteur] = scorereconnaissance;
+					exigences[compteur] = scoreexigences;
+					autonomie[compteur] = scoreautonomie;
+					var textepointK = positionpoint(scoresoutien,scoreexigences,scoreautonomie);
+					var textepointS = positionpoint(scorereconnaissance,scoreexigences,scoreautonomie);
+					textepointK += '<br>' + filesToLoad[compteur].name;
+					textepointS += '<br>' + filesToLoad[compteur].name;
+					texteK[compteur] = textepointK;
+					texteS[compteur] = textepointS;
+					if (compteur === (filesToLoad.length - 1))
+					{
+						var updateK = { x: soutien, y: exigences, z: autonomie, type:'scatter3d', mode:'markers', hoverinfo:'x+y+z+text', text: texteK, marker:{symbol: 'diamond', size: 4, opacity: 0.5} };
+						var updateS = { x: reconnaissance, y: exigences, z: autonomie, type:'scatter3d', mode:'markers', hoverinfo:'x+y+z+text', text: texteS, marker:{symbol: 'diamond', size: 4, opacity: 0.5}};
+						var layout = {showlegend: false};
+						var style = {showlegend: true};
+						Plotly.addTraces(document.getElementById('karasek'), updateK);
+						Plotly.addTraces(document.getElementById('siegrist'), updateS);
+						Plotly.restyle(document.getElementById('karasek'),layout);
+						Plotly.restyle(document.getElementById('karasek'),style,[0,1,2,3]);
+						Plotly.restyle(document.getElementById('siegrist'),layout);
+						Plotly.restyle(document.getElementById('siegrist'),style,[0,1,2,3]);
+						document.getElementById("cubes").style.display = "grid";
+						changeclass("boutonQ",true);
+						changeclass("boutonG",false);
+					}
+					compteur++;
+				};
 			}
 		}
 	}
 }
-
 function pleinecran()
 {
 	if (screenfull.enabled)
@@ -860,7 +840,6 @@ function pleinecran()
 		}
 	}
 }
-
 function recommandations(soutien, reconnaissance, exigences, autonomie)
 {
 	var textetable = "<p><h2><strong>Recommandations :</strong></h2></p><table id='tablerecos'><thead><tr><th><h3>Exigences</h3></th><th><h3>Autonomie</h3></th><th><h3>Soutien</h3></th><th><h3>Reconnaissance</h3></th></tr></thead><tbody>";
@@ -899,10 +878,10 @@ function recommandations(soutien, reconnaissance, exigences, autonomie)
 	document.getElementById("Recommandations").innerHTML = textetable + "</tr></tbody></table><p></p><p><h2>Graphiques :</h2></p><p></p>";
 	document.getElementById("Questionnaire").style.display = "inline";
 	document.getElementById("Recommandations").style.display = "inline";
-	document.getElementById("MenuP").style.display = "block";
+	changeclass("boutonQ",true);
+	changeclass("boutonG",false);
 	document.getElementById("Recommandations").scrollIntoView(true);
 }
-
 function menu(item)
 {
 	switch (item)
@@ -914,12 +893,10 @@ function menu(item)
 			document.getElementById('AnalyseI').style.display='none';
 			document.getElementById('AnalyseG').style.display='none';
 			document.getElementById('AnalyseC').style.display='none';
-			document.getElementById('MenuQ').style.display='none';
-			document.getElementById('MenuG').style.display='none';
-			document.getElementById('MenuP').style.display='none';
 			document.getElementById('cubes').style.display='none';
 			document.getElementById('Messages').style.display='none';
 			document.getElementById('Recommandations').style.display='none';
+			changeclass("boutonQ",true);
 			break;
 		case 'aide':
 			document.getElementById('Apropos').style.display='none';
@@ -928,12 +905,10 @@ function menu(item)
 			document.getElementById('AnalyseI').style.display='none';
 			document.getElementById('AnalyseG').style.display='none';
 			document.getElementById('AnalyseC').style.display='none';
-			document.getElementById('MenuQ').style.display='none';
-			document.getElementById('MenuG').style.display='none';
-			document.getElementById('MenuP').style.display='none';
 			document.getElementById('cubes').style.display='none';
 			document.getElementById('Messages').style.display='none';
 			document.getElementById('Recommandations').style.display='none';
+			changeclass("boutonQ",true);
 			break;
 		case 'questionnaire':
 			effacer();
@@ -943,12 +918,10 @@ function menu(item)
 			document.getElementById('AnalyseI').style.display='none';
 			document.getElementById('AnalyseG').style.display='none';
 			document.getElementById('AnalyseC').style.display='none';
-			document.getElementById('MenuQ').style.display='block';
-			document.getElementById('MenuG').style.display='none';
-			document.getElementById('MenuP').style.display='none';
 			document.getElementById('cubes').style.display='none';
 			document.getElementById('Messages').style.display='none';
 			document.getElementById('Recommandations').style.display='none';
+			changeclass("boutonQ",false);
 			break;
 		case 'individu':
 			document.getElementById("fileToLoad").value = "";
@@ -958,12 +931,10 @@ function menu(item)
 			document.getElementById('AnalyseI').style.display='inline';
 			document.getElementById('AnalyseG').style.display='none';
 			document.getElementById('AnalyseC').style.display='none';
-			document.getElementById('MenuQ').style.display='none';
-			document.getElementById('MenuG').style.display='none';
-			document.getElementById('MenuP').style.display='none';
 			document.getElementById('cubes').style.display='none';
 			document.getElementById('Messages').style.display='none';
 			document.getElementById('Recommandations').style.display='none';
+			changeclass("boutonQ",true);
 			break;
 		case 'groupe':
 			document.getElementById("filesToLoad").value = "";
@@ -973,12 +944,10 @@ function menu(item)
 			document.getElementById('AnalyseI').style.display='none';
 			document.getElementById('AnalyseG').style.display='inline';
 			document.getElementById('AnalyseC').style.display='none';
-			document.getElementById('MenuQ').style.display='none';
-			document.getElementById('MenuG').style.display='none';
-			document.getElementById('MenuP').style.display='none';
 			document.getElementById('cubes').style.display='none';
 			document.getElementById('Messages').style.display='none';
 			document.getElementById('Recommandations').style.display='none';
+			changeclass("boutonQ",true);
 			break;
 		case 'collectif':
 			document.getElementById("filesToLoadc").value = "";
@@ -988,26 +957,25 @@ function menu(item)
 			document.getElementById('AnalyseI').style.display='none';
 			document.getElementById('AnalyseG').style.display='none';
 			document.getElementById('AnalyseC').style.display='inline';
-			document.getElementById('MenuQ').style.display='none';
-			document.getElementById('MenuG').style.display='none';
-			document.getElementById('MenuP').style.display='none';
 			document.getElementById('cubes').style.display='none';
 			document.getElementById('Messages').style.display='none';
 			document.getElementById('Recommandations').style.display='none';
+			changeclass("boutonQ",true);
 			break;
 		case 'graphiques':
-			document.getElementById('Apropos').style.display='none';
-			document.getElementById('Aide').style.display='none';
-			document.getElementById('Questionnaire').style.display='none';
-			document.getElementById('AnalyseI').style.display='none';
-			document.getElementById('AnalyseG').style.display='none';
-			document.getElementById('AnalyseC').style.display='none';
-			document.getElementById('MenuQ').style.display='none';
-			document.getElementById('MenuG').style.display='block';
-			document.getElementById('MenuP').style.display='none';
-			document.getElementById('cubes').style.display='grid';
-			document.getElementById('Messages').style.display='none';
-			document.getElementById('Recommandations').style.display='none';
+			if (document.getElementById('cubes').style.display==='none')
+			{
+				document.getElementById('Apropos').style.display='none';
+				document.getElementById('Aide').style.display='none';
+				document.getElementById('Questionnaire').style.display='none';
+				document.getElementById('AnalyseI').style.display='none';
+				document.getElementById('AnalyseG').style.display='none';
+				document.getElementById('AnalyseC').style.display='none';
+				document.getElementById('cubes').style.display='grid';
+				document.getElementById('Messages').style.display='none';
+				document.getElementById('Recommandations').style.display='none';
+				changeclass("boutonQ",true);
+			};
 			break;
 		default:
 			document.getElementById("fileToLoad").value = "";
@@ -1019,19 +987,16 @@ function menu(item)
 			document.getElementById('AnalyseI').style.display='none';
 			document.getElementById('AnalyseG').style.display='none';
 			document.getElementById('AnalyseC').style.display='none';
-			document.getElementById('MenuQ').style.display='none';
-			document.getElementById('MenuG').style.display='none';
-			document.getElementById('MenuP').style.display='none';
 			document.getElementById('cubes').style.display='none';
 			document.getElementById('Messages').style.display='none';
 			document.getElementById('Recommandations').style.display='none';
+			changeclass("boutonQ",true);
+			changeclass("boutonG",true);
 	}
 }
-
-function imprime()
-{
-	document.getElementById("Impression").innerHTML = document.getElementById("Questionnaire").innerHTML + document.getElementById("Recommandations").innerHTML + document.getElementById("cubes").innerHTML;
-	console.log(document.getElementById("Impression").innerHTML);
-	print();
-	console.log(document.getElementById("Impression").innerHTML);
+function changeclass(classe,flag) {
+    elements = document.getElementsByClassName(classe);
+    for (var i = 0; i < elements.length; i++) {
+		elements[i].disabled = flag;
+	}
 }
