@@ -47,8 +47,8 @@ input[type=file]:hover {background-color:darkred;color:white}
 .boutoncharger:hover {background-color:darkred;color:white;padding:10px}
 .Messages {display: none;color: darkred}
 .Aide {display: none;color: darkred}
-.karasek { grid-area: karasek}
-.siegrist { grid-area: siegrist}
+.karasek {grid-area: karasek}
+.siegrist {grid-area: siegrist}
 .Recommandations {display: none}
 table {
   table-layout: fixed;
@@ -82,15 +82,11 @@ td ul {display: inline; list-style-type: disc;padding: 10px;list-style-position:
     border: none;
     margin: 0;
   }
-  .AnalyseI, button, input, .boutoncharger {
-    visibility: hidden;
-    display: none;
-  }
-  .Messages {visibility: hidden;}
-  table {break-inside: avoid;}
+  .AnalyseI, button, input, .boutoncharger {visibility: hidden;display: none}
+  .Messages {visibility: hidden}
+  table {break-inside: avoid}
 }
-@media screen and (max-width: 800px) {
-.Cubes {display: block;display: none}
-.karasek {display:block}
-.siegrist {display:block}
+@media screen and (max-width: 599px) {
+img {visibility: hidden}
+.MenuMain button {font-weight: normal;padding: 5px}
 }

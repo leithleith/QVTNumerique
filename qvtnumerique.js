@@ -198,6 +198,10 @@ function positionpoint(pointx, exigences, autonomie)
 }
 function graphiques(soutien, reconnaissance, exigences, autonomie, flag, textepointK, textepointS)
 {
+	if ((document.getElementById("karasek").data === undefined) || (document.getElementById("siegrist").data === undefined))
+	{
+		prechargement();
+	}
 	var updateK = { x:[soutien], y:[exigences], z:[autonomie], type:'scatter3d', hoverinfo:'x+y+z+text', text: textepointK, marker:{}};
 	var updateS = { x:[reconnaissance], y:[exigences], z:[autonomie], type:'scatter3d', hoverinfo:'x+y+z+text', text: textepointS, marker:{}};
 	var layout = {showlegend: false};
@@ -213,8 +217,15 @@ function graphiques(soutien, reconnaissance, exigences, autonomie, flag, textepo
 		document.getElementById('siegrist').on('plotly_afterplot', function(){document.getElementById("filesToLoad").value = "";});
 	}
 	changeclass("boutonQ",true);
-	changeclass("boutonG",true);
-	document.getElementById('cubes').style.display = "grid";
+	changeclass("boutonG",false);
+	if (screen.width < 800)
+	{
+		document.getElementById('cubes').style.display = "block";
+	}
+	else
+	{
+		document.getElementById('cubes').style.display = "grid";
+	}
 }
 function purge()
 {
@@ -818,27 +829,18 @@ function collectif()
 }
 function pleinecran()
 {
-	if (screenfull.enabled)
-	{
-		if (document.getElementById("cubes").style.display === "grid")
+	document.getElementById("cubes").requestFullscreen();
+	document.getElementById("cubes").addEventListener('fullscreenchange', (event) => {
+		if (!document.fullscreenElement)
 		{
-			screenfull.request(document.getElementById('cubes'));
-			document.getElementById("karasek").style.height = "100vh";
-			document.getElementById("karasek").style.width = "50vw";
-			document.getElementById("siegrist").style.height = "100vh";
-			document.getElementById("siegrist").style.width = "50vw";
-			screenfull.on('change', () => {
-				if (!screenfull.isFullscreen)
-				{
-					document.getElementById("karasek").style.height = "50vh";
-					document.getElementById("karasek").style.width = "50%";
-					document.getElementById("siegrist").style.height = "50vh";
-					document.getElementById("siegrist").style.width = "50%";
-					screenfull.off('change', callback);
-				}
-			});
+			document.getElementById("cubes").style.width = "100%";
+			var cote = "" + (document.getElementById("cubes").offsetWidth / 2) + "px";
+			document.getElementById("karasek").style.width = cote;
+			document.getElementById("karasek").style.height = cote;
+			document.getElementById("siegrist").style.width = cote;
+			document.getElementById("siegrist").style.height = cote;
 		}
-	}
+	});
 }
 function recommandations(soutien, reconnaissance, exigences, autonomie)
 {
