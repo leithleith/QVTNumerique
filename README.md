@@ -4,7 +4,7 @@ Un outil <a href="https://www.ugict.cgt.fr/" target="_ugict">UGICT-CGT</a>, pour
 
 Respectueux de la vie priv&eacute;e et de l'anonymat.<br/>
 Open source sous licence MIT.<br/>
-Biblioth&egrave;ques open source sous licence MIT : <a href="https://github.com/plotly/plotly.js" target="plotly">plotly.js</a> &amp; <a href="https://github.com/sindresorhus/screenfull.js/" target="screenfull">screenfull.js</a>
+Biblioth&egrave;que open source sous licence MIT : <a href="https://github.com/plotly/plotly.js" target="plotly">plotly.js</a>
 
 Fichiers :
 
@@ -19,5 +19,4 @@ Fichiers :
   </ul>
   <li>qvtnumerique.css</li>
   <li>qvtnumerique.js</li>
-<li>bibliothèque <a href="https://github.com/sindresorhus/screenfull.js/" target="screenfull">screenfull.min.js</a> : v4.2.1 - 2019-07-27 ; Copyright Sindre Sorhus. Licenced under the MIT license.</li>
   </ul>
