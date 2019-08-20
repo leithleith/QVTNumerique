@@ -19,4 +19,7 @@ Fichiers :
   </ul>
   <li>qvtnumerique.css</li>
   <li>qvtnumerique.js</li>
+  <li>qvtnumerique.manifest</li>
+  <li>icone192.png</li>
+  <li>sw.js</li>
   </ul>
