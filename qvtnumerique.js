@@ -1,9 +1,9 @@
 function prechargement()
 {
 	Plotly.setPlotConfig({locale: 'fr'});
-	var dataK = [{ x: [36, 18, 36, 36, 36, 36, 18, 36], y: [0, 0, 0, 0, 18, 0, 0, 18], z: [36, 36, 18, 36, 36, 18, 36, 36], type:'scatter3d', mode:'lines', line: {color: 'green', width:4}, hoverinfo:"name", name: 'Travail Protecteur' }, { x: [0, 0, 0, 0, 0, 0, 18, 0, 0, 18, 36, 18, 36, 36, 0, 18, 36], y: [36, 36, 0, 0, 18, 0, 18, 0, 36, 18, 36, 36, 36, 18, 0, 18, 18], z: [18, 36, 36, 0, 0, 0, 18, 36, 36, 18, 0, 0, 0, 0, 0, 18, 0], type:'scatter3d', mode:'lines', line: {color: 'yellow', width:4}, hoverinfo:"name", name: 'Zone d\'Attention' }, { x: [0, 0, 27, 18, 27, 0, 0, 0, 0], y: [36, 36, 36, 36, 36, 9, 18, 9, 36], z: [18, 36, 0, 0, 0, 0, 0, 0, 36], type:'scatter3d', mode:'lines', line: {color: 'orange', width:4}, hoverinfo:"name", name: 'Zone d\'Alerte' }, { x: [0, 18, 0, 0, 0, 18, 0, 0], y: [36, 36, 18, 36, 36, 36, 18, 36], z: [0, 0, 0, 0, 18, 0, 0, 18], type:'scatter3d', mode:'lines', line: {color: 'red', width:4}, hoverinfo:"name", name: 'Risque pour la Sant\u00e9'}];
-	var dataS = [{ x: [36, 18, 36, 36, 36, 36, 18, 36], y: [0, 0, 0, 0, 18, 0, 0, 18], z: [36, 36, 18, 36, 36, 18, 36, 36], type:'scatter3d', mode:'lines', line: {color: 'green', width:4}, hoverinfo:"name", name: 'Travail Protecteur' }, { x: [0, 0, 0, 0, 0, 0, 18, 0, 0, 18, 36, 18, 36, 36, 0, 18, 36], y: [36, 36, 0, 0, 18, 0, 18, 0, 36, 18, 36, 36, 36, 18, 0, 18, 18], z: [18, 36, 36, 0, 0, 0, 18, 36, 36, 18, 0, 0, 0, 0, 0, 18, 0], type:'scatter3d', mode:'lines', line: {color: 'yellow', width:4}, hoverinfo:"name", name: 'Zone d\'Attention' }, { x: [0, 0, 27, 18, 27, 0, 0, 0, 0], y: [36, 36, 36, 36, 36, 9, 18, 9, 36], z: [18, 36, 0, 0, 0, 0, 0, 0, 36], type:'scatter3d', mode:'lines', line: {color: 'orange', width:4}, hoverinfo:"name", name: 'Zone d\'Alerte' }, { x: [0, 18, 0, 0, 0, 18, 0, 0], y: [36, 36, 18, 36, 36, 36, 18, 36], z: [0, 0, 0, 0, 18, 0, 0, 18], type:'scatter3d', mode:'lines', line: {color: 'red', width:4}, hoverinfo:"name", name: 'Risque pour la Sant\u00e9'}];
-	var layoutkarasek = {autosize: true, dragmode: 'turntable', showlegend: true, legend:{x: 0, y: 0}, scene: {xaxis:{range: [0, 36], title: 'Soutien', tickmode: 'linear', dtick: 9, mirror: true, nticks: 9, type: 'linear', autorange: false, showline: true}, yaxis:{range: [0, 36], title: 'Exigences', tickmode: 'linear', dtick: 9, mirror: true, nticks: 9, type: 'linear', autorange: false, showline: true}, zaxis:{range: [0, 36], title: 'Autonomie',  tickmode: 'linear', dtick: 9, mirror: true, nticks: 9, type: 'linear', autorange: false, showline: true},	camera: {up: {y: 0, x: 0, z: 1}, center: {y: 0, x: 0, z: -0.5}, eye: {y: 2.5, x: 1.5, z: 1}}}, margin:{l: 0, r: 0, b: 0, t: 0, pad: 1}};
+	var dataK = [{ x: [28, 19, 19, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 28, 28, 36, 28, 28, 28, 28, 28, 28, 36, 28, 28, 36, 28, 28, 19, 19, 19, 19, 19, 19, 19, 19, 28, 28, 36, 28, 28, 36, 28, 28, 19, 28, 28, 28, 28, 28, 36, 28, 28, 28, 28, 19, 28, 28, 28, 28], y: [0, 0, 0, 0, 0, 9, 9, 18, 18, 27, 27, 0, 0, 0, 9, 9, 9, 0, 9, 9, 0, 9, 9, 9, 18, 18, 18, 9, 9, 0, 9, 9, 18, 18, 0, 18, 18, 27, 27, 27, 27, 27, 27, 18, 18, 18, 18, 18, 18, 18, 18, 18, 9, 9, 9, 9, 9, 9, 0, 0], z: [19, 19, 36, 36, 10, 10, 19, 19, 28, 28, 36, 36, 10, 10, 10, 10, 10, 10, 10, 19, 19, 19, 19, 19, 19, 19, 19, 19, 19, 19, 19, 28, 28, 36, 36, 36, 36, 36, 36, 36, 28, 28, 28, 28, 28, 28, 19, 28, 36, 28, 28, 28, 28, 19, 28, 28, 28, 10, 10, 19], type:'scatter3d', mode:'lines', line: {color: 'green', width:2}, hoverinfo:"none", name: 'Travail Protecteur' }, { x: [9, 9, 9, 9, 9, 9, 9, 18, 18, 9, 18, 18, 9, 18, 18, 18, 18, 0, 18, 18, 9, 9, 9, 0, 9, 9, 0, 9, 9, 0, 9, 9, 0, 9, 9, 0, 9, 9, 9, 9, 0, 0, 0, 0, 0, 0, 0, 0, 0, 9, 0, 0, 0, 0, 9, 9, 9, 0, 9, 9, 9, 9, 9, 9, 18, 18, 9, 9, 9, 18, 18], y: [36, 19, 28, 28, 28, 19, 28, 28, 28, 28, 28, 36, 36, 36, 36, 19, 36, 36, 36, 36, 36, 36, 28, 28, 28, 28, 28, 28, 19, 19, 19, 19, 19, 19, 10, 10, 10, 10, 0, 10, 10, 0, 10, 10, 19, 19, 28, 28, 36, 36, 36, 36, 0, 0, 0, 0, 0, 0, 0, 19, 19, 10, 19, 19, 19, 19, 19, 19, 19, 19, 28], z: [18, 18, 18, 27, 9, 9, 9, 9, 18, 18, 18, 18, 18, 18, 0, 0, 0, 0, 0, 18, 18, 36, 36, 36, 36, 27, 27, 27, 27, 27, 27, 18, 18, 18, 18, 18, 18, 9, 9, 9, 9, 9, 9, 18, 18, 27, 27, 36, 36, 36, 36, 0, 0, 9, 9, 0, 0, 0, 0, 0, 9, 9, 9, 0, 0, 9, 9, 18, 9, 9, 9], type:'scatter3d', mode:'lines', line: {color: 'red', width:2}, hoverinfo:"none", name: 'Risque pour la Sant\u00e9'}];
+	var dataS = [{ x: [28, 19, 19, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 28, 28, 36, 28, 28, 28, 28, 28, 28, 36, 28, 28, 36, 28, 28, 19, 19, 19, 19, 19, 19, 19, 19, 28, 28, 36, 28, 28, 36, 28, 28, 19, 28, 28, 28, 28, 28, 36, 28, 28, 28, 28, 19, 28, 28, 28, 28], y: [0, 0, 0, 0, 0, 9, 9, 18, 18, 27, 27, 0, 0, 0, 9, 9, 9, 0, 9, 9, 0, 9, 9, 9, 18, 18, 18, 9, 9, 0, 9, 9, 18, 18, 0, 18, 18, 27, 27, 27, 27, 27, 27, 18, 18, 18, 18, 18, 18, 18, 18, 18, 9, 9, 9, 9, 9, 9, 0, 0], z: [19, 19, 36, 36, 10, 10, 19, 19, 28, 28, 36, 36, 10, 10, 10, 10, 10, 10, 10, 19, 19, 19, 19, 19, 19, 19, 19, 19, 19, 19, 19, 28, 28, 36, 36, 36, 36, 36, 36, 36, 28, 28, 28, 28, 28, 28, 19, 28, 36, 28, 28, 28, 28, 19, 28, 28, 28, 10, 10, 19], type:'scatter3d', mode:'lines', line: {color: 'green', width:2}, hoverinfo:"none", name: 'Travail Protecteur' }, { x: [9, 9, 9, 9, 9, 9, 9, 18, 18, 9, 18, 18, 9, 18, 18, 18, 18, 0, 18, 18, 9, 9, 9, 0, 9, 9, 0, 9, 9, 0, 9, 9, 0, 9, 9, 0, 9, 9, 9, 9, 0, 0, 0, 0, 0, 0, 0, 0, 0, 9, 0, 0, 0, 0, 9, 9, 9, 0, 9, 9, 9, 9, 9, 9, 18, 18, 9, 9, 9, 18, 18], y: [36, 19, 28, 28, 28, 19, 28, 28, 28, 28, 28, 36, 36, 36, 36, 19, 36, 36, 36, 36, 36, 36, 28, 28, 28, 28, 28, 28, 19, 19, 19, 19, 19, 19, 10, 10, 10, 10, 0, 10, 10, 0, 10, 10, 19, 19, 28, 28, 36, 36, 36, 36, 0, 0, 0, 0, 0, 0, 0, 19, 19, 10, 19, 19, 19, 19, 19, 19, 19, 19, 28], z: [18, 18, 18, 27, 9, 9, 9, 9, 18, 18, 18, 18, 18, 18, 0, 0, 0, 0, 0, 18, 18, 36, 36, 36, 36, 27, 27, 27, 27, 27, 27, 18, 18, 18, 18, 18, 18, 9, 9, 9, 9, 9, 9, 18, 18, 27, 27, 36, 36, 36, 36, 0, 0, 9, 9, 0, 0, 0, 0, 0, 9, 9, 9, 0, 0, 9, 9, 18, 9, 9, 9], type:'scatter3d', mode:'lines', line: {color: 'red', width:2}, hoverinfo:"none", name: 'Risque pour la Sant\u00e9'}];
+	var layoutkarasek = {autosize: true, dragmode: 'turntable', showlegend: true, legend:{x: 0, y: 0}, scene: {xaxis:{range: [0, 36], title: 'Soutien', tickmode: 'linear', dtick: 9, mirror: true, nticks: 9, type: 'linear', autorange: false, showline: true}, yaxis:{range: [0, 36], title: 'Exigences', tickmode: 'linear', dtick: 9, mirror: true, nticks: 9, type: 'linear', autorange: false, showline: true}, zaxis:{range: [0, 36], title: 'Autonomie',  tickmode: 'linear', dtick: 9, mirror: true, nticks: 9, type: 'linear', autorange: false, showline: true}, camera: {up: {y: 0, x: 0, z: 1}, center: {y: 0, x: 0, z: -0.5}, eye: {y: 2.5, x: 1.5, z: 1}}}, margin:{l: 0, r: 0, b: 0, t: 0, pad: 1}};
 	var layoutsiegrist = {autosize: true, dragmode: 'turntable', showlegend: true, legend:{x: 0, y: 0}, scene: {xaxis:{range: [0, 36], title: 'Reconnaissance', tickmode: 'linear', dtick: 9, mirror: true, nticks: 9, type: 'linear', autorange: false, showline: true}, yaxis:{range: [0, 36], title: 'Exigences', tickmode: 'linear', dtick: 9, mirror: true, nticks: 9, type: 'linear', autorange: false, showline: true}, zaxis: {range: [0, 36], title: 'Autonomie',  tickmode: 'linear', dtick: 9, mirror: true, nticks: 9, type: 'linear', autorange: false, showline: true}, camera: {up: {y: 0, x: 0, z: 1}, center: {y: 0, x: 0, z: -0.5}, eye: {y: 2.5, x: 1.5, z: 1}}}, margin:{l: 0, r: 0, b: 0, t: 0, pad: 1}};
 	Plotly.newPlot(document.getElementById('karasek'), dataK, layoutkarasek, {modeBarButtonsToRemove: ['toImage', 'sendDataToCloud', 'resetCameraDefault3d', 'resetCameraLastSave3d', 'hoverClosest3d'], displayModeBar: true, displaylogo: false, responsive: true});
 	Plotly.newPlot(document.getElementById('siegrist'), dataS, layoutsiegrist, {modeBarButtonsToRemove: ['toImage', 'sendDataToCloud', 'resetCameraDefault3d', 'resetCameraLastSave3d', 'hoverClosest3d'], displayModeBar: true, displaylogo: false, responsive: true});
@@ -161,57 +161,117 @@ function sauveimages()
 }
 function positionpoint(pointx, exigences, autonomie)
 {
-	var matriceverte = [[-18,0,18], [0,18,18], [pointx - 36, exigences, autonomie - 18]];
-	var determinantvert = matriceverte[0][0] * (matriceverte[1][1]*matriceverte[2][2] - matriceverte[1][2]*matriceverte[2][1]) - matriceverte[0][1] * (matriceverte[1][0]*matriceverte[2][2] - matriceverte[1][2]*matriceverte[2][0]) + matriceverte[0][2] * (matriceverte[1][0]*matriceverte[2][1] - matriceverte[1][1]*matriceverte[2][0]);
-	if (determinantvert <= 0)
+	var couleurexigences;
+	var couleurautonomie;
+	var couleurpointx;
+	if ((exigences >= 0) && (exigences <= 9))
 	{
-		return("Le point est dans la zone de travail protecteur :)");
+		couleurexigences = 1;
 	}
-	var matricerouge = [[-18,-18,0], [-18,0,18], [pointx - 18, exigences - 36, autonomie]];
-	var determinantrouge = matricerouge[0][0] * (matricerouge[1][1]*matricerouge[2][2] - matricerouge[1][2]*matricerouge[2][1]) - matricerouge[0][1] * (matricerouge[1][0]*matricerouge[2][2] - matricerouge[1][2]*matricerouge[2][0]) + matricerouge[0][2] * (matricerouge[1][0]*matricerouge[2][1] - matricerouge[1][1]*matricerouge[2][0]);
-	if (determinantrouge >= 0)
+	if ((exigences >= 10) && (exigences <= 18))
 	{
-		return("Le point est dans la zone de risque pour la santé :(");
+		couleurexigences = 10;
 	}
-	var matriceorange = [[-27,-27,0], [-27,0,36], [pointx - 27, exigences - 36, autonomie]];
-	var determinantorange = matriceorange[0][0] * (matriceorange[1][1]*matriceorange[2][2] - matriceorange[1][2]*matriceorange[2][1]) - matriceorange[0][1] * (matriceorange[1][0]*matriceorange[2][2] - matriceorange[1][2]*matriceorange[2][0]) + matriceorange[0][2] * (matriceorange[1][0]*matriceorange[2][1] - matriceorange[1][1]*matriceorange[2][0]);
-	if (determinantorange >= 0)
+	if ((exigences >= 19) && (exigences <= 27))
 	{
-		return("Le point est dans la zone d\'alerte !");
+		couleurexigences = 100;
 	}
-	var matricejaune = [[[-18,-18,-18], [-18,-18,18], [pointx - 18, exigences - 18, autonomie - 18]], [[-36,-18,0], [-18,0,18], [pointx - 36, exigences - 18, autonomie]], [[0,-18,0], [-18,-18,18], [pointx - 36, exigences - 36, autonomie]], [[-18,-18,18], [-18,18,18], [pointx - 18, exigences - 18, autonomie - 18]], [[-18,-18,18], [-36,0,36], [pointx - 36, exigences - 36, autonomie]]];
-	var determinant = [];
-	var compte = 0;
-	for (var i = 0; i < 5; i++)
+	if ((exigences >= 28) && (exigences <= 36))
 	{
-		determinant[i] = matricejaune[i][0][0] * (matricejaune[i][1][1]*matricejaune[i][2][2] - matricejaune[i][1][2]*matricejaune[i][2][1]) - matricejaune[i][0][1] * (matricejaune[i][1][0]*matricejaune[i][2][2] - matricejaune[i][1][2]*matricejaune[i][2][0]) + matricejaune[i][0][2] * (matricejaune[i][1][0]*matricejaune[i][2][1] - matricejaune[i][1][1]*matricejaune[i][2][0]);
-		if (determinant[i] >= 0)
+		couleurexigences = 1000;
+	}
+	if ((autonomie >= 0) && (autonomie <= 9))
+	{
+		couleurautonomie = 1000;
+	}
+	if ((autonomie >= 10) && (autonomie <= 18))
+	{
+		couleurautonomie = 100;
+	}
+	if ((autonomie >= 19) && (autonomie <= 27))
+	{
+		couleurautonomie = 10;
+	}
+	if ((autonomie >= 28) && (autonomie <= 36))
+	{
+		couleurautonomie = 1;
+	}
+	var intermediaire = couleurautonomie + couleurexigences;
+	if ((intermediaire === 2) || (intermediaire === 11))
+	{
+		if (((pointx >= 28) && (pointx <= 36)) || ((pointx >= 19) && (pointx <= 27)))
 		{
-			compte += 1;
+			return(1);
+		}
+		if ((pointx >= 10) && (pointx <= 18))
+		{
+			return(2);
+		}
+		if ((pointx >= 0) && (pointx <= 9))
+		{
+			return(3);
+		}		
+	}
+	if ((intermediaire === 20) || (intermediaire === 101))
+	{
+		if (((pointx >= 28) && (pointx <= 36)))
+		{
+			return(1);
+		}
+		if ((pointx >= 19) && (pointx <= 27))
+		{
+			return(2);
+		}
+		if (((pointx >= 10) && (pointx <= 18)) || ((pointx >= 0) && (pointx <= 9)))
+		{
+			return(3);
 		}
 	}
-	if (compte >= 4)
+	if ((intermediaire === 1001) || (intermediaire === 110) || (intermediaire === 1010) || (intermediaire === 200))
 	{
-		return("Le point est dans la zone d\'attention.");
+		if ((pointx >= 28) && (pointx <= 36))
+		{
+			return(2);
+		}
+		if (((pointx >= 10) && (pointx <= 18)) || ((pointx >= 19) && (pointx <= 27)))
+		{
+			return(3);
+		}
+		if ((pointx >= 0) && (pointx <= 9))
+		{
+			return(4);
+		}
 	}
-	return "";
+	if ((intermediaire === 1100) || (intermediaire === 2000))
+	{
+		if (((pointx >= 28) && (pointx <= 36)) || ((pointx >= 19) && (pointx <= 27)))
+		{
+			return(3);
+		}
+		if (((pointx >= 10) && (pointx <= 18)) || ((pointx >= 0) && (pointx <= 9)))
+		{
+			return(4);
+		}
+	}
+	return(0);
 }
-function graphiques(soutien, reconnaissance, exigences, autonomie, flag, textepointK, textepointS)
+function graphiques(soutien, reconnaissance, exigences, autonomie, flag, textepointK, textepointS, couleurpointK, couleurpointS)
 {
 	if ((document.getElementById("karasek").data === undefined) || (document.getElementById("siegrist").data === undefined))
 	{
+		document.getElementById("Messages").innerHTML += "<br/>Initialisation de l'environnement graphique...";
 		prechargement();
 	}
-	var updateK = { x:[soutien], y:[exigences], z:[autonomie], type:'scatter3d', hoverinfo:'x+y+z+text', text: textepointK, marker:{}};
-	var updateS = { x:[reconnaissance], y:[exigences], z:[autonomie], type:'scatter3d', hoverinfo:'x+y+z+text', text: textepointS, marker:{}};
+    var updateK = { x:[soutien], y:[exigences], z:[autonomie], type:'scatter3d', hoverinfo:'x+y+z+text', text: textepointK, hoverlabel:{bgcolor: couleurpointK}, marker:{color: couleurpointK}};
+	var updateS = { x:[reconnaissance], y:[exigences], z:[autonomie], type:'scatter3d', hoverinfo:'x+y+z+text', text: textepointS, hoverlabel:{bgcolor: couleurpointS}, marker:{color: couleurpointS}};
 	var layout = {showlegend: false};
 	var style = {showlegend: true};
 	Plotly.addTraces(document.getElementById('karasek'), updateK);
 	Plotly.addTraces(document.getElementById('siegrist'), updateS);
 	Plotly.restyle(document.getElementById('karasek'),layout);
-	Plotly.restyle(document.getElementById('karasek'),style,[0,1,2,3]);
+	Plotly.restyle(document.getElementById('karasek'),style,[0,1]);
 	Plotly.restyle(document.getElementById('siegrist'),layout);
-    Plotly.restyle(document.getElementById('siegrist'),style,[0,1,2,3]);
+    Plotly.restyle(document.getElementById('siegrist'),style,[0,1]);
     if (flag === true)
 	{
 		document.getElementById('siegrist').on('plotly_afterplot', function(){document.getElementById("filesToLoad").value = "";});
@@ -229,7 +289,7 @@ function graphiques(soutien, reconnaissance, exigences, autonomie, flag, textepo
 }
 function purge()
 {
-    if(document.getElementById('karasek').data.length > 4 && document.getElementById('siegrist').data.length > 4)
+    if(document.getElementById('karasek').data.length > 2 && document.getElementById('siegrist').data.length > 2)
     {
         Plotly.deleteTraces(document.getElementById('karasek'), -1);
         Plotly.deleteTraces(document.getElementById('siegrist'), -1);
@@ -237,13 +297,16 @@ function purge()
 }
 function purgetotale()
 {
-    if(document.getElementById('karasek').data.length > 4 && document.getElementById('siegrist').data.length > 4)
-    {
-        Plotly.purge(document.getElementById('karasek'));
-        Plotly.purge(document.getElementById('siegrist'));
-		prechargement();
-		document.getElementById("cubes").style.display = "grid";
-    }
+	if ((document.getElementById("karasek").data != undefined) && (document.getElementById("siegrist").data != undefined))
+	{
+		if((document.getElementById('karasek').data.length > 2) && (document.getElementById('siegrist').data.length > 2))
+		{
+			Plotly.purge(document.getElementById('karasek'));
+			Plotly.purge(document.getElementById('siegrist'));
+			prechargement();
+			document.getElementById("cubes").style.display = "grid";
+		}
+	}
 }
 function effacer()
 {
@@ -394,12 +457,61 @@ function traiter()
         }
 		return;
 	}
-    calculer();
-    var textepointK = positionpoint(document.getElementById('soutien').value);
-    var textepointS = positionpoint(document.getElementById('reconnaissance').value);
-    textepointK += "<br>questionnaire saisi directement";
-    textepointS += "<br>questionnaire saisi directement";
-	graphiques(document.getElementById('soutien').value, document.getElementById('reconnaissance').value, document.getElementById('exigences').value,document.getElementById('autonomie').value, false,textepointK, textepointS);
+	calculer();
+	var positionK = positionpoint(document.getElementById('soutien').value, document.getElementById('exigences').value,document.getElementById('autonomie').value);
+	var positionS = positionpoint(document.getElementById('reconnaissance').value, document.getElementById('exigences').value,document.getElementById('autonomie').value);
+	var textepointK;
+	var textepointS;
+	var couleurpointK;
+	var couleurpointS;
+	switch (positionK)
+	{
+		case 1:
+			textepointK = "Le point est dans la zone de travail protecteur :)";
+			couleurpointK = "darkgreen";
+			break;
+		case 2:
+			textepointK = "Le point est dans la zone d\'attention.";
+			couleurpointK = "yellow";
+			break;
+		case 3:
+			textepointK = "Le point est dans la zone d\'alerte !";
+			couleurpointK = "darkorange";
+			break;
+		case 4:
+			textepointK = "Le point est dans la zone de risque pour la santé :(";
+			couleurpointK = "red";
+			break;
+		default:
+			textepointK = "";
+			couleurpointK = "darkgrey";
+	}
+	switch (positionS)
+	{
+		case 1:
+			textepointS = "Le point est dans la zone de travail protecteur :)";
+			couleurpointS = "darkgreen";
+			break;
+		case 2:
+			textepointS = "Le point est dans la zone d\'attention.";
+			couleurpointS = "yellow";
+			break;
+		case 3:
+			textepointS = "Le point est dans la zone d\'alerte !";
+			couleurpointS = "darkorange";
+			break;
+		case 4:
+			textepointS = "Le point est dans la zone de risque pour la santé :(";
+			couleurpointS = "red";
+			break;
+		default:
+			textepointS = "";
+			couleurpointS = "darkgrey";
+	}
+	textepointK += "<br/>questionnaire saisi directement";
+	textepointS += "<br/>questionnaire saisi directement";
+	purgetotale();
+	graphiques(document.getElementById('soutien').value, document.getElementById('reconnaissance').value, document.getElementById('exigences').value, document.getElementById('autonomie').value, false, textepointK, textepointS, couleurpointK, couleurpointS);
 	recommandations(document.getElementById('soutien').value, document.getElementById('reconnaissance').value, document.getElementById('exigences').value,document.getElementById('autonomie').value);
 }
 function loadMultipleFilesAsText(flag)
@@ -558,28 +670,81 @@ function loadMultipleFilesAsText(flag)
                         if (found === -1)
                         {
                             calculer();
-                            var textepointK = positionpoint(document.getElementById('soutien').value, document.getElementById('exigences').value, document.getElementById('autonomie').value);
-                            var textepointS = positionpoint(document.getElementById('reconnaissance').value, document.getElementById('exigences').value, document.getElementById('autonomie').value);
+                            var positionK = positionpoint(document.getElementById('soutien').value, document.getElementById('exigences').value, document.getElementById('autonomie').value);
+							var positionS = positionpoint(document.getElementById('reconnaissance').value, document.getElementById('exigences').value, document.getElementById('autonomie').value);
+							var textepointK;
+							var textepointS;
+							var couleurpointK;
+							var couleurpointS;
+							switch (positionK)
+							{
+								case 1:
+									textepointK = "Le point est dans la zone de travail protecteur :)";
+									couleurpointK = "darkgreen";
+									break;
+								case 2:
+									textepointK = "Le point est dans la zone d\'attention.";
+									couleurpointK = "yellow";
+									break;
+								case 3:
+									textepointK = "Le point est dans la zone d\'alerte !";
+									couleurpointK = "darkorange";
+									break;
+								case 4:
+									textepointK = "Le point est dans la zone de risque pour la santé :(";
+									couleurpointK = "red";
+									break;
+								default:
+									textepointK = "";
+									couleurpointK = "darkgrey";
+							}
+							switch (positionS)
+							{
+								case 1:
+									textepointS = "Le point est dans la zone de travail protecteur :)";
+									couleurpointS = "darkgreen";
+									break;
+								case 2:
+									textepointS = "Le point est dans la zone d\'attention.";
+									couleurpointS = "yellow";
+									break;
+								case 3:
+									textepointS = "Le point est dans la zone d\'alerte !";
+									couleurpointS = "darkorange";
+									break;
+								case 4:
+									textepointS = "Le point est dans la zone de risque pour la santé :(";
+									couleurpointS = "red";
+									break;
+								default:
+									textepointS = "";
+									couleurpointS = "darkgrey";
+							}
                             textepointK += '<br>' + fileToLoad[compteur].name;
                             textepointS += '<br>' + fileToLoad[compteur].name;
-                            if (fileToLoad.length === 1)
+							if (fileToLoad.length === 1)
                             {
-								graphiques(document.getElementById('soutien').value, document.getElementById('reconnaissance').value, document.getElementById('exigences').value, document.getElementById('autonomie').value, false, textepointK, textepointS);
 								if (flag === false)
 								{
+									purgetotale();
+									graphiques(document.getElementById('soutien').value, document.getElementById('reconnaissance').value, document.getElementById('exigences').value, document.getElementById('autonomie').value, false, textepointK, textepointS, couleurpointK, couleurpointS);
 									recommandations(document.getElementById('soutien').value, document.getElementById('reconnaissance').value, document.getElementById('exigences').value, document.getElementById('autonomie').value);
 									document.getElementById("Questionnaire").style.display = "inline";
 									document.getElementById("Recommandations").scrollIntoView(true);
 								}
+								else if (flag === true)
+								{
+									graphiques(document.getElementById('soutien').value, document.getElementById('reconnaissance').value, document.getElementById('exigences').value, document.getElementById('autonomie').value, false, textepointK, textepointS, couleurpointK, couleurpointS);
+								}
                             }
                             else if (compteur < (fileToLoad.length - 1))
                             {
-                                graphiques(document.getElementById('soutien').value, document.getElementById('reconnaissance').value, document.getElementById('exigences').value, document.getElementById('autonomie').value, false, textepointK, textepointS);
+                                graphiques(document.getElementById('soutien').value, document.getElementById('reconnaissance').value, document.getElementById('exigences').value, document.getElementById('autonomie').value, false, textepointK, textepointS, couleurpointK, couleurpointS);
                                 effacer();
                             }
                             else if (compteur === (fileToLoad.length - 1))
                             {
-                                graphiques(document.getElementById('soutien').value, document.getElementById('reconnaissance').value, document.getElementById('exigences').value, document.getElementById('autonomie').value, true, textepointK, textepointS);
+                                graphiques(document.getElementById('soutien').value, document.getElementById('reconnaissance').value, document.getElementById('exigences').value, document.getElementById('autonomie').value, true, textepointK, textepointS, couleurpointK, couleurpointS);
                                 effacer();
                             }
                         }
@@ -691,13 +856,14 @@ function collectif()
 				document.getElementById("Messages").innerHTML += "<br/>" + filesToLoad[n].name + " : fichier invalide !";
 			}
 			else
-			{
-				soutien = [];
+			{soutien = [];
 				reconnaissance = [];
 				exigences = [];
 				autonomie = [];
 				texteK = [];
 				texteS = [];
+				couleurK = [];
+				couleurS = [];
 				var fileReader = new FileReader();
 				fileReader.readAsText(filesToLoad[n], "UTF-8");
 				fileReader.onload = function(fileLoadedEvent) 
@@ -799,30 +965,83 @@ function collectif()
 					reconnaissance[compteur] = scorereconnaissance;
 					exigences[compteur] = scoreexigences;
 					autonomie[compteur] = scoreautonomie;
-					var textepointK = positionpoint(scoresoutien,scoreexigences,scoreautonomie);
-					var textepointS = positionpoint(scorereconnaissance,scoreexigences,scoreautonomie);
+					var positionK = positionpoint(scoresoutien,scoreexigences,scoreautonomie);
+					var positionS = positionpoint(scorereconnaissance,scoreexigences,scoreautonomie);
+					var textepointK;
+					var textepointS;
+					switch (positionK)
+					{
+						case 1:
+							textepointK = "Le point est dans la zone de travail protecteur :)";
+							couleurpointK = "darkgreen";
+							break;
+						case 2:
+							textepointK = "Le point est dans la zone d\'attention.";
+							couleurpointK = "yellow";
+							break;
+						case 3:
+							textepointK = "Le point est dans la zone d\'alerte !";
+							couleurpointK = "darkorange";
+							break;
+						case 4:
+							textepointK = "Le point est dans la zone de risque pour la santé :(";
+							couleurpointK = "red";
+							break;
+						default:
+							textepointK = "";
+							couleurpointK = "darkgrey";
+					}
+					switch (positionS)
+					{
+						case 1:
+							textepointS = "Le point est dans la zone de travail protecteur :)";
+							couleurpointS = "darkgreen";
+							break;
+						case 2:
+							textepointS = "Le point est dans la zone d\'attention.";
+							couleurpointS = "yellow";
+							break;
+						case 3:
+							textepointS = "Le point est dans la zone d\'alerte !";
+							couleurpointS = "darkorange";
+							break;
+						case 4:
+							textepointS = "Le point est dans la zone de risque pour la santé :(";
+							couleurpointS = "red";
+							break;
+						default:
+							textepointS = "";
+							couleurpointS = "darkgrey";
+					}
 					textepointK += '<br>' + filesToLoad[compteur].name;
 					textepointS += '<br>' + filesToLoad[compteur].name;
 					texteK[compteur] = textepointK;
 					texteS[compteur] = textepointS;
+					couleurK[compteur] = couleurpointK;
+					couleurS[compteur] = couleurpointS;
 					if (compteur === (filesToLoad.length - 1))
 					{
-						var updateK = { x: soutien, y: exigences, z: autonomie, type:'scatter3d', mode:'markers', hoverinfo:'x+y+z+text', text: texteK, marker:{symbol: 'diamond', size: 4, opacity: 0.5} };
-						var updateS = { x: reconnaissance, y: exigences, z: autonomie, type:'scatter3d', mode:'markers', hoverinfo:'x+y+z+text', text: texteS, marker:{symbol: 'diamond', size: 4, opacity: 0.5}};
+						if ((document.getElementById("karasek").data === undefined) || (document.getElementById("siegrist").data === undefined))
+						{
+							document.getElementById("Messages").innerHTML += "<br/>Initialisation de l'environnement graphique...";
+							prechargement();
+						}
+						var updateK = { x: soutien, y: exigences, z: autonomie, type:'scatter3d', mode:'markers', hoverinfo:'x+y+z+text', hoverlabel:{bgcolor: couleurK}, text: texteK, marker:{symbol: 'diamond', size: 4, opacity: 0.5} };
+						var updateS = { x: reconnaissance, y: exigences, z: autonomie, type:'scatter3d', mode:'markers', hoverinfo:'x+y+z+text', hoverlabel:{bgcolor: couleurS}, text: texteS, marker:{symbol: 'diamond', size: 4, opacity: 0.5}};
 						var layout = {showlegend: false};
 						var style = {showlegend: true};
 						Plotly.addTraces(document.getElementById('karasek'), updateK);
 						Plotly.addTraces(document.getElementById('siegrist'), updateS);
 						Plotly.restyle(document.getElementById('karasek'),layout);
-						Plotly.restyle(document.getElementById('karasek'),style,[0,1,2,3]);
+						Plotly.restyle(document.getElementById('karasek'),style,[0,1]);
 						Plotly.restyle(document.getElementById('siegrist'),layout);
-						Plotly.restyle(document.getElementById('siegrist'),style,[0,1,2,3]);
+						Plotly.restyle(document.getElementById('siegrist'),style,[0,1]);
 						document.getElementById("cubes").style.display = "grid";
 						changeclass("boutonQ",true);
 						changeclass("boutonG",false);
 					}
 					compteur++;
-				};
+				};				
 			}
 		}
 	}
@@ -855,7 +1074,7 @@ function recommandations(soutien, reconnaissance, exigences, autonomie)
 	}
 	if (autonomie < 19)
 	{
-		textetable += "<td><ul><li><a href=\"https://lenumeriqueautrement.fr/fiches-qvt/management-et-formation/tracabilite-autonomie-et-reconnaissance/\" target=\"_fiche\">Tra&ccedil;abilit&eacute;, autonomie et reconnaissance</a></li><li><a href=\"https://lenumeriqueautrement.fr/fiches-qvt/temps-de-travail-et-deconnexion/equilibre-vie-professionnelle-vie-personnelle/\" target=\"_fiche\">Equilibre vie professionnelle, vie personnelle</a></li><li><a href=\"https://lenumeriqueautrement.fr/fiches-qvt/temps-de-travail-et-deconnexion/outils-numeriques-et-temps-de-travail-masque/\" target=\"_fiche\">Outils num&eacute;riques et temps de travail masqu&eacute;</a></li><li><a href=\"https://lenumeriqueautrement.fr/fiches-qvt/temps-de-travail-et-deconnexion/forfait-jours-et-sante-au-travail/\" target=\"_fiche\">Forfait jours et sant&eacute; au travail</a></li><li><a href=\"https://lenumeriqueautrement.fr/blog/quelle-est-la-realite-du-temps-de-travail-des-cadres/\" target=\"_fiche\">R&eacute;alit&eacute; du temps de travail des cadres</a></li><li><a href=\"https://lenumeriqueautrement.fr/les-outils/le-guide-du-droit-a-la-deconnexion/\" target=\"_fiche\">Guide du droit à la d&eacute;connexion</a></li><li><a href=\"https://lenumeriqueautrement.fr/les-outils/pointeuse-perso-lappli-smartphone-pour-faire-respecter-votre-temps-de-travail/\" target=\"_fiche\">Application Pointeuse Perso</a></li></ul></td>";	
+		textetable += "<td><ul><li><a href=\"https://lenumeriqueautrement.fr/fiches-qvt/management-et-formation/tracabilite-autonomie-et-reconnaissance/\" target=\"_fiche\">Tra&ccedil;abilit&eacute;, autonomie et reconnaissance</a></li><li><a href=\"https://lenumeriqueautrement.fr/fiches-qvt/temps-de-travail-et-deconnexion/equilibre-vie-professionnelle-vie-personnelle/\" target=\"_fiche\">Equilibre vie professionnelle, vie personnelle</a></li><li><a href=\"https://lenumeriqueautrement.fr/fiches-qvt/temps-de-travail-et-deconnexion/outils-numeriques-et-temps-de-travail-masque/\" target=\"_fiche\">Outils num&eacute;riques et temps de travail masqu&eacute;</a></li><li><a href=\"https://lenumeriqueautrement.fr/fiches-qvt/temps-de-travail-et-deconnexion/forfait-jours-et-sante-au-travail/\" target=\"_fiche\">Forfait jours et sant&eacute; au travail</a></li><li><a href=\"https://lenumeriqueautrement.fr/blog/quelle-est-la-realite-du-temps-de-travail-des-cadres/\" target=\"_fiche\">R&eacute;alit&eacute; du temps de travail des cadres</a></li><li><a href=\"https://lenumeriqueautrement.fr/les-outils/le-guide-du-droit-a-la-deconnexion/\" target=\"_fiche\">Guide du droit à la d&eacute;connexion</a></li><li><a href=\"GuideManagement-Fiche2-UGICT-CGT.pdf\" target=\"_fiche\">Fiche 2 du Guide du Management &agrave; l'&egrave;re du num&eacute;rique</a></li></ul></td>";
 	}
 	else
 	{
@@ -863,7 +1082,7 @@ function recommandations(soutien, reconnaissance, exigences, autonomie)
 	}
 	if (soutien < 19)
 	{
-		textetable += "<td><ul><li><a href=\"https://lenumeriqueautrement.fr/fiches-qvt/management-et-formation/management-et-soutien/\" target=\"_fiche\">Management et soutien</a></li><li><a href=\"https://lenumeriqueautrement.fr/fiches-qvt/droit-dexpression/droit-dexpression-latitude-decisionnelle-et-conduite-du-changement/\" target=\"_fiche\">Droit d'expression, latitude d&eacute;cisionnelle et conduite du changement</a></li><li><a href=\"https://lenumeriqueautrement.fr/fiches-qvt/management-et-formation/accompagnement-et-formation-a-lutilisation-des-outils-numeriques/\" target=\"_fiche\">Accompagnement et formation &agrave; l'utilisation des outils num&eacute;riques</a></li><li><a href=\"https://lenumeriqueautrement.fr/fiches-qvt/organisation-du-travail-son-environnement-et-ses-espaces/securite-des-donnees-et-des-utilisateurs/\" target=\"_fiche\">S&eacute;curit&eacute; des donn&eacute;es et des utilisateurs</a></li></ul></td>";
+		textetable += "<td><ul><li><a href=\"https://lenumeriqueautrement.fr/fiches-qvt/management-et-formation/management-et-soutien/\" target=\"_fiche\">Management et soutien</a></li><li><a href=\"https://lenumeriqueautrement.fr/fiches-qvt/droit-dexpression/droit-dexpression-latitude-decisionnelle-et-conduite-du-changement/\" target=\"_fiche\">Droit d'expression, latitude d&eacute;cisionnelle et conduite du changement</a></li><li><a href=\"https://lenumeriqueautrement.fr/fiches-qvt/management-et-formation/accompagnement-et-formation-a-lutilisation-des-outils-numeriques/\" target=\"_fiche\">Accompagnement et formation &agrave; l'utilisation des outils num&eacute;riques</a></li><li><a href=\"https://lenumeriqueautrement.fr/fiches-qvt/organisation-du-travail-son-environnement-et-ses-espaces/securite-des-donnees-et-des-utilisateurs/\" target=\"_fiche\">S&eacute;curit&eacute; des donn&eacute;es et des utilisateurs</a></li><li><a href=\"GuideManagement-Fiche1-UGICT-CGT.pdf\" target=\"_fiche\">Fiche 1 du Guide du Management &agrave; l'&egrave;re du num&eacute;rique</a></li><li><a href=\"GuideManagement-Fiche3-UGICT-CGT.pdf\" target=\"_fiche\">Fiche 3 du Guide du Management &agrave; l'&egrave;re du num&eacute;rique</a></li></ul></td>";
 	}
 	else
 	{
@@ -871,7 +1090,7 @@ function recommandations(soutien, reconnaissance, exigences, autonomie)
 	}
 	if (reconnaissance < 19)
 	{
-		textetable += "<td><ul><li><a href=\"https://lenumeriqueautrement.fr/fiches-qvt/management-et-formation/tracabilite-autonomie-et-reconnaissance/\" target=\"_fiche\">Tra&ccedil;abilit&eacute;, autonomie et reconnaissance</a></li></ul></td>";
+		textetable += "<td><ul><li><a href=\"https://lenumeriqueautrement.fr/fiches-qvt/management-et-formation/tracabilite-autonomie-et-reconnaissance/\" target=\"_fiche\">Tra&ccedil;abilit&eacute;, autonomie et reconnaissance</a></li><li><a href=\"GuideManagement-Fiche4-UGICT-CGT.pdf\" target=\"_fiche\">Fiche 4 du Guide du Management &agrave; l'&egrave;re du num&eacute;rique</a></li><li><a href=\"GuideManagement-Fiche5-UGICT-CGT.pdf\" target=\"_fiche\">Fiche 5 du Guide du Management &agrave; l'&egrave;re du num&eacute;rique</a></li></ul></td>";
 	}
 	else
 	{
