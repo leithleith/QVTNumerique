@@ -856,7 +856,8 @@ function collectif()
 				document.getElementById("Messages").innerHTML += "<br/>" + filesToLoad[n].name + " : fichier invalide !";
 			}
 			else
-			{soutien = [];
+			{
+				soutien = [];
 				reconnaissance = [];
 				exigences = [];
 				autonomie = [];
@@ -864,6 +865,14 @@ function collectif()
 				texteS = [];
 				couleurK = [];
 				couleurS = [];
+				vertk = 0;
+				jaunek = 0;
+				orangek = 0;
+				rougek = 0;
+				verts = 0;
+				jaunes = 0;
+				oranges = 0;
+				rouges = 0;
 				var fileReader = new FileReader();
 				fileReader.readAsText(filesToLoad[n], "UTF-8");
 				fileReader.onload = function(fileLoadedEvent) 
@@ -974,18 +983,22 @@ function collectif()
 						case 1:
 							textepointK = "Le point est dans la zone de travail protecteur :)";
 							couleurpointK = "darkgreen";
+							vertk++;
 							break;
 						case 2:
 							textepointK = "Le point est dans la zone d\'attention.";
 							couleurpointK = "yellow";
+							jaunek++;
 							break;
 						case 3:
 							textepointK = "Le point est dans la zone d\'alerte !";
 							couleurpointK = "darkorange";
+							orangek++;
 							break;
 						case 4:
 							textepointK = "Le point est dans la zone de risque pour la santé :(";
 							couleurpointK = "red";
+							rougek++;
 							break;
 						default:
 							textepointK = "";
@@ -996,18 +1009,22 @@ function collectif()
 						case 1:
 							textepointS = "Le point est dans la zone de travail protecteur :)";
 							couleurpointS = "darkgreen";
+							verts++;
 							break;
 						case 2:
 							textepointS = "Le point est dans la zone d\'attention.";
 							couleurpointS = "yellow";
+							jaunes++;
 							break;
 						case 3:
 							textepointS = "Le point est dans la zone d\'alerte !";
 							couleurpointS = "darkorange";
+							oranges++;
 							break;
 						case 4:
 							textepointS = "Le point est dans la zone de risque pour la santé :(";
 							couleurpointS = "red";
+							rouges++;
 							break;
 						default:
 							textepointS = "";
@@ -1021,6 +1038,53 @@ function collectif()
 					couleurS[compteur] = couleurpointS;
 					if (compteur === (filesToLoad.length - 1))
 					{
+						var moyexigences, moyautonomie, moysoutien, moyreconnaissance, medexigences, medautonomie, medsoutien, medreconnaissance;
+						moyexigences = (exigences.reduce(function(a, b) { return a + b; }) / exigences.length).toFixed(2);
+						moyautonomie = (autonomie.reduce(function(a, b) { return a + b; }) / autonomie.length).toFixed(2);
+						moysoutien = (soutien.reduce(function(a, b) { return a + b; }) / soutien.length).toFixed(2);
+						moyreconnaissance = (reconnaissance.reduce(function(a, b) { return a + b; }) / reconnaissance.length).toFixed(2);
+						var numbers = exigences.slice(0).sort((a,b) => a - b);
+  						var middle = Math.floor(numbers.length / 2);
+						if (numbers.length % 2 === 0)
+						{
+							medexigences = ((numbers[middle] + numbers[middle - 1]) / 2).toFixed(2);
+						}
+						else
+						{
+							medexigences = (numbers[middle]).toFixed(2);
+						}
+						numbers = autonomie.slice(0).sort((a,b) => a - b);
+  						middle = Math.floor(numbers.length / 2);
+						if (numbers.length % 2 === 0)
+						{
+							medautonomie = ((numbers[middle] + numbers[middle - 1]) / 2).toFixed(2);
+						}
+						else
+						{
+							medautonomie = (numbers[middle]).toFixed(2);
+						}
+						numbers = exigences.slice(0).sort((a,b) => a - b);
+  						middle = Math.floor(numbers.length / 2);
+						if (numbers.length % 2 === 0)
+						{
+							medsoutien = ((numbers[middle] + numbers[middle - 1]) / 2).toFixed(2);
+						}
+						else
+						{
+							medsoutien = (numbers[middle]).toFixed(2);
+						}
+						numbers = exigences.slice(0).sort((a,b) => a - b);
+  						middle = Math.floor(numbers.length / 2);
+						if (numbers.length % 2 === 0)
+						{
+							medreconnaissance = ((numbers[middle] + numbers[middle - 1]) / 2).toFixed(2);
+						}
+						else
+						{
+							medreconnaissance = (numbers[middle]).toFixed(2);
+						}
+						document.getElementById("Recommandations").innerHTML = "<p><h2><strong>Statistiques :</strong></h2></p><table class='tablestats'><thead><tr><th></th><th><h3>Exigences</h3></th><th><h3>Autonomie</h3></th><th><h3>Soutien</h3></th><th><h3>Reconnaissance</h3></th></tr></thead><tbody><tr><td><h3>Moyenne</h3></td><td>" + moyexigences + "</td><td>" + moyautonomie + "</td><td>" + moysoutien + "</td><td>" + moyreconnaissance + "</td></tr><tr><td><h3>M&eacute;diane</h3></td><td>" + medexigences + "</td><td>" + medautonomie + "</td><td>" + medsoutien + "</td><td>" + medreconnaissance + "</td></tr></tr></tbody></table><p></p>";
+						document.getElementById("Recommandations").innerHTML += "<table class='tablestats'><thead><tr><th></th><th><h3>Zone verte</h3></th><th><h3>Zone jaune</h3></th><th><h3>Zone orange</h3></th><th><h3>Zone rouge</h3></th></tr></thead><tbody><tr><td><h3>Soutien</h3></td><td>" + vertk + "</td><td>" + jaunek + "</td><td>" + orangek + "</td><td>" + rougek + "</tr><tr><td><h3>Reconnaissance</h3></td><td>" + verts + "</td><td>" + jaunes + "</td><td>" + oranges + "</td><td>" + rouges + "</tr></tr></tbody></table><p></p><p><h2>Graphiques :</h2></p><p></p>";
 						if ((document.getElementById("karasek").data === undefined) || (document.getElementById("siegrist").data === undefined))
 						{
 							document.getElementById("Messages").innerHTML += "<br/>Initialisation de l'environnement graphique...";
@@ -1037,6 +1101,8 @@ function collectif()
 						Plotly.restyle(document.getElementById('siegrist'),layout);
 						Plotly.restyle(document.getElementById('siegrist'),style,[0,1]);
 						document.getElementById("cubes").style.display = "grid";
+						document.getElementById("Recommandations").style.display = "inline";
+						document.getElementById("Recommandations").scrollIntoView(true);
 						changeclass("boutonQ",true);
 						changeclass("boutonG",false);
 					}

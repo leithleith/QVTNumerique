@@ -71,6 +71,9 @@ td {
   padding: 10px;
   width: 25%
 }
+.tablestats td {
+  text-align: center;
+}
 td ul {display: inline; list-style-type: disc;padding: 10px;list-style-position: inside}
 @media print {
   body * {visibility: hidden;}
