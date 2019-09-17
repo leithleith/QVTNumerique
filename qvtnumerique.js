@@ -1,6 +1,5 @@
 function prechargement()
 {
-	Plotly.setPlotConfig({locale: 'fr'});
 	var dataK = [{ x: [28, 19, 19, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 28, 28, 36, 28, 28, 28, 28, 28, 28, 36, 28, 28, 36, 28, 28, 19, 19, 19, 19, 19, 19, 19, 19, 28, 28, 36, 28, 28, 36, 28, 28, 19, 28, 28, 28, 28, 28, 36, 28, 28, 28, 28, 19, 28, 28, 28, 28], y: [0, 0, 0, 0, 0, 9, 9, 18, 18, 27, 27, 0, 0, 0, 9, 9, 9, 0, 9, 9, 0, 9, 9, 9, 18, 18, 18, 9, 9, 0, 9, 9, 18, 18, 0, 18, 18, 27, 27, 27, 27, 27, 27, 18, 18, 18, 18, 18, 18, 18, 18, 18, 9, 9, 9, 9, 9, 9, 0, 0], z: [19, 19, 36, 36, 10, 10, 19, 19, 28, 28, 36, 36, 10, 10, 10, 10, 10, 10, 10, 19, 19, 19, 19, 19, 19, 19, 19, 19, 19, 19, 19, 28, 28, 36, 36, 36, 36, 36, 36, 36, 28, 28, 28, 28, 28, 28, 19, 28, 36, 28, 28, 28, 28, 19, 28, 28, 28, 10, 10, 19], type:'scatter3d', mode:'lines', line: {color: 'green', width:2}, hoverinfo:"none", name: 'Travail Protecteur' }, { x: [9, 9, 9, 9, 9, 9, 9, 18, 18, 9, 18, 18, 9, 18, 18, 18, 18, 0, 18, 18, 9, 9, 9, 0, 9, 9, 0, 9, 9, 0, 9, 9, 0, 9, 9, 0, 9, 9, 9, 9, 0, 0, 0, 0, 0, 0, 0, 0, 0, 9, 0, 0, 0, 0, 9, 9, 9, 0, 9, 9, 9, 9, 9, 9, 18, 18, 9, 9, 9, 18, 18], y: [36, 19, 28, 28, 28, 19, 28, 28, 28, 28, 28, 36, 36, 36, 36, 19, 36, 36, 36, 36, 36, 36, 28, 28, 28, 28, 28, 28, 19, 19, 19, 19, 19, 19, 10, 10, 10, 10, 0, 10, 10, 0, 10, 10, 19, 19, 28, 28, 36, 36, 36, 36, 0, 0, 0, 0, 0, 0, 0, 19, 19, 10, 19, 19, 19, 19, 19, 19, 19, 19, 28], z: [18, 18, 18, 27, 9, 9, 9, 9, 18, 18, 18, 18, 18, 18, 0, 0, 0, 0, 0, 18, 18, 36, 36, 36, 36, 27, 27, 27, 27, 27, 27, 18, 18, 18, 18, 18, 18, 9, 9, 9, 9, 9, 9, 18, 18, 27, 27, 36, 36, 36, 36, 0, 0, 9, 9, 0, 0, 0, 0, 0, 9, 9, 9, 0, 0, 9, 9, 18, 9, 9, 9], type:'scatter3d', mode:'lines', line: {color: 'red', width:2}, hoverinfo:"none", name: 'Risque pour la Sant\u00e9'}];
 	var dataS = [{ x: [28, 19, 19, 36, 36, 36, 36, 36, 36, 36, 36, 36, 36, 28, 28, 36, 28, 28, 28, 28, 28, 28, 36, 28, 28, 36, 28, 28, 19, 19, 19, 19, 19, 19, 19, 19, 28, 28, 36, 28, 28, 36, 28, 28, 19, 28, 28, 28, 28, 28, 36, 28, 28, 28, 28, 19, 28, 28, 28, 28], y: [0, 0, 0, 0, 0, 9, 9, 18, 18, 27, 27, 0, 0, 0, 9, 9, 9, 0, 9, 9, 0, 9, 9, 9, 18, 18, 18, 9, 9, 0, 9, 9, 18, 18, 0, 18, 18, 27, 27, 27, 27, 27, 27, 18, 18, 18, 18, 18, 18, 18, 18, 18, 9, 9, 9, 9, 9, 9, 0, 0], z: [19, 19, 36, 36, 10, 10, 19, 19, 28, 28, 36, 36, 10, 10, 10, 10, 10, 10, 10, 19, 19, 19, 19, 19, 19, 19, 19, 19, 19, 19, 19, 28, 28, 36, 36, 36, 36, 36, 36, 36, 28, 28, 28, 28, 28, 28, 19, 28, 36, 28, 28, 28, 28, 19, 28, 28, 28, 10, 10, 19], type:'scatter3d', mode:'lines', line: {color: 'green', width:2}, hoverinfo:"none", name: 'Travail Protecteur' }, { x: [9, 9, 9, 9, 9, 9, 9, 18, 18, 9, 18, 18, 9, 18, 18, 18, 18, 0, 18, 18, 9, 9, 9, 0, 9, 9, 0, 9, 9, 0, 9, 9, 0, 9, 9, 0, 9, 9, 9, 9, 0, 0, 0, 0, 0, 0, 0, 0, 0, 9, 0, 0, 0, 0, 9, 9, 9, 0, 9, 9, 9, 9, 9, 9, 18, 18, 9, 9, 9, 18, 18], y: [36, 19, 28, 28, 28, 19, 28, 28, 28, 28, 28, 36, 36, 36, 36, 19, 36, 36, 36, 36, 36, 36, 28, 28, 28, 28, 28, 28, 19, 19, 19, 19, 19, 19, 10, 10, 10, 10, 0, 10, 10, 0, 10, 10, 19, 19, 28, 28, 36, 36, 36, 36, 0, 0, 0, 0, 0, 0, 0, 19, 19, 10, 19, 19, 19, 19, 19, 19, 19, 19, 28], z: [18, 18, 18, 27, 9, 9, 9, 9, 18, 18, 18, 18, 18, 18, 0, 0, 0, 0, 0, 18, 18, 36, 36, 36, 36, 27, 27, 27, 27, 27, 27, 18, 18, 18, 18, 18, 18, 9, 9, 9, 9, 9, 9, 18, 18, 27, 27, 36, 36, 36, 36, 0, 0, 9, 9, 0, 0, 0, 0, 0, 9, 9, 9, 0, 0, 9, 9, 18, 9, 9, 9], type:'scatter3d', mode:'lines', line: {color: 'red', width:2}, hoverinfo:"none", name: 'Risque pour la Sant\u00e9'}];
 	var layoutkarasek = {autosize: true, dragmode: 'turntable', showlegend: true, legend:{x: 0, y: 0}, scene: {xaxis:{range: [0, 36], title: 'Soutien', tickmode: 'linear', dtick: 9, mirror: true, nticks: 9, type: 'linear', autorange: false, showline: true}, yaxis:{range: [0, 36], title: 'Exigences', tickmode: 'linear', dtick: 9, mirror: true, nticks: 9, type: 'linear', autorange: false, showline: true}, zaxis:{range: [0, 36], title: 'Autonomie',  tickmode: 'linear', dtick: 9, mirror: true, nticks: 9, type: 'linear', autorange: false, showline: true}, camera: {up: {y: 0, x: 0, z: 1}, center: {y: 0, x: 0, z: -0.5}, eye: {y: 2.5, x: 1.5, z: 1}}}, margin:{l: 0, r: 0, b: 0, t: 0, pad: 1}};
@@ -259,7 +258,6 @@ function graphiques(soutien, reconnaissance, exigences, autonomie, flag, textepo
 {
 	if ((document.getElementById("karasek").data === undefined) || (document.getElementById("siegrist").data === undefined))
 	{
-		document.getElementById("Messages").innerHTML += "<br/>Initialisation de l'environnement graphique...";
 		prechargement();
 	}
     var updateK = { x:[soutien], y:[exigences], z:[autonomie], type:'scatter3d', hoverinfo:'x+y+z+text', text: textepointK, hoverlabel:{bgcolor: couleurpointK}, marker:{color: couleurpointK}};
@@ -271,10 +269,16 @@ function graphiques(soutien, reconnaissance, exigences, autonomie, flag, textepo
 	Plotly.restyle(document.getElementById('karasek'),layout);
 	Plotly.restyle(document.getElementById('karasek'),style,[0,1]);
 	Plotly.restyle(document.getElementById('siegrist'),layout);
-    Plotly.restyle(document.getElementById('siegrist'),style,[0,1]);
+	Plotly.restyle(document.getElementById('siegrist'),style,[0,1]);
     if (flag === true)
 	{
-		document.getElementById('siegrist').on('plotly_afterplot', function(){document.getElementById("filesToLoad").value = "";});
+		//document.getElementById('siegrist').on('plotly_afterplot', function(){document.getElementById("filesToLoad").value = "";document.getElementById("lds-default").style.display = "none";});
+		document.getElementById('siegrist').on('plotly_afterplot', function(){document.getElementById("lds-default").style.display = "none";});
+	}
+	else
+	{
+		//document.getElementById('siegrist').on('plotly_afterplot', function(){document.getElementById("fileToLoad").value = "";document.getElementById("lds-default").style.display = "none";});
+		document.getElementById('siegrist').on('plotly_afterplot', function(){document.getElementById("fileToLoad").value = "";document.getElementById("lds-default").style.display = "none";});
 	}
 	changeclass("boutonQ",true);
 	changeclass("boutonG",false);
@@ -292,7 +296,7 @@ function purge()
     if(document.getElementById('karasek').data.length > 2 && document.getElementById('siegrist').data.length > 2)
     {
         Plotly.deleteTraces(document.getElementById('karasek'), -1);
-        Plotly.deleteTraces(document.getElementById('siegrist'), -1);
+		Plotly.deleteTraces(document.getElementById('siegrist'), -1);
     }
 }
 function purgetotale()
@@ -336,6 +340,7 @@ function effacer()
 }
 function traiter()
 {
+	document.getElementById("lds-default").style.display = "inline-block";
     var cocheA = false;
 	var cocheB = false;
 	var cocheC = false;
@@ -511,11 +516,14 @@ function traiter()
 	textepointK += "<br/>questionnaire saisi directement";
 	textepointS += "<br/>questionnaire saisi directement";
 	purgetotale();
+	document.getElementById("lds-default").style.display = "inline-block";
 	graphiques(document.getElementById('soutien').value, document.getElementById('reconnaissance').value, document.getElementById('exigences').value, document.getElementById('autonomie').value, false, textepointK, textepointS, couleurpointK, couleurpointS);
 	recommandations(document.getElementById('soutien').value, document.getElementById('reconnaissance').value, document.getElementById('exigences').value,document.getElementById('autonomie').value);
 }
 function loadMultipleFilesAsText(flag)
 {
+	document.getElementById("lds-default").style.display = "inline-block";
+
 	if (flag === true)
 	{
 		fileToLoad = document.getElementById("filesToLoad").files;
@@ -795,6 +803,8 @@ function loadMultipleFilesAsText(flag)
                                 }
 							}
 							document.getElementById("Questionnaire").style.display = "inline";
+							document.getElementById("lds-default").style.display = "none";
+							changeclass("boutonQ",false);
                         }
 					}
 					compteur++;
@@ -842,6 +852,7 @@ function calculer()
 }
 function collectif()
 {
+	document.getElementById("lds-default").style.display = "inline-block";
 	filesToLoad = document.getElementById("filesToLoadc").files;
 	if (filesToLoad.length > 0)
 	{
@@ -1087,7 +1098,6 @@ function collectif()
 						document.getElementById("Recommandations").innerHTML += "<table class='tablestats'><thead><tr><th></th><th><h3>Zone verte</h3></th><th><h3>Zone jaune</h3></th><th><h3>Zone orange</h3></th><th><h3>Zone rouge</h3></th></tr></thead><tbody><tr><td><h3>Soutien</h3></td><td>" + vertk + "</td><td>" + jaunek + "</td><td>" + orangek + "</td><td>" + rougek + "</tr><tr><td><h3>Reconnaissance</h3></td><td>" + verts + "</td><td>" + jaunes + "</td><td>" + oranges + "</td><td>" + rouges + "</tr></tr></tbody></table><p></p><p><h2>Graphiques :</h2></p><p></p>";
 						if ((document.getElementById("karasek").data === undefined) || (document.getElementById("siegrist").data === undefined))
 						{
-							document.getElementById("Messages").innerHTML += "<br/>Initialisation de l'environnement graphique...";
 							prechargement();
 						}
 						var updateK = { x: soutien, y: exigences, z: autonomie, type:'scatter3d', mode:'markers', hoverinfo:'x+y+z+text', hoverlabel:{bgcolor: couleurK}, text: texteK, marker:{symbol: 'diamond', size: 4, opacity: 0.5} };
@@ -1100,6 +1110,7 @@ function collectif()
 						Plotly.restyle(document.getElementById('karasek'),style,[0,1]);
 						Plotly.restyle(document.getElementById('siegrist'),layout);
 						Plotly.restyle(document.getElementById('siegrist'),style,[0,1]);
+						document.getElementById('siegrist').on('plotly_afterplot', function(){document.getElementById("filesToLoadc").value = "";document.getElementById("lds-default").style.display = "none";});
 						document.getElementById("cubes").style.display = "grid";
 						document.getElementById("Recommandations").style.display = "inline";
 						document.getElementById("Recommandations").scrollIntoView(true);
@@ -1319,7 +1330,7 @@ function menu(item)
 			document.getElementById('AnalyseG').style.display='none';
 			document.getElementById('AnalyseC').style.display='none';
 			document.getElementById('cubes').style.display='none';
-			document.getElementById('Messages').style.display='none';
+			document.getElementById('Messages').style.display='inline';
 			document.getElementById('Recommandations').style.display='none';
 			changeclass("boutonQ",true);
 			break;
@@ -1332,7 +1343,7 @@ function menu(item)
 			document.getElementById('AnalyseG').style.display='inline';
 			document.getElementById('AnalyseC').style.display='none';
 			document.getElementById('cubes').style.display='none';
-			document.getElementById('Messages').style.display='none';
+			document.getElementById('Messages').style.display='inline';
 			document.getElementById('Recommandations').style.display='none';
 			changeclass("boutonQ",true);
 			break;
@@ -1345,7 +1356,7 @@ function menu(item)
 			document.getElementById('AnalyseG').style.display='none';
 			document.getElementById('AnalyseC').style.display='inline';
 			document.getElementById('cubes').style.display='none';
-			document.getElementById('Messages').style.display='none';
+			document.getElementById('Messages').style.display='inline';
 			document.getElementById('Recommandations').style.display='none';
 			changeclass("boutonQ",true);
 			break;
