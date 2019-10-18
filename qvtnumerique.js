@@ -272,12 +272,10 @@ function graphiques(soutien, reconnaissance, exigences, autonomie, flag, textepo
 	Plotly.restyle(document.getElementById('siegrist'),style,[0,1]);
     if (flag === true)
 	{
-		//document.getElementById('siegrist').on('plotly_afterplot', function(){document.getElementById("filesToLoad").value = "";document.getElementById("lds-default").style.display = "none";});
 		document.getElementById('siegrist').on('plotly_afterplot', function(){document.getElementById("lds-default").style.display = "none";});
 	}
 	else
 	{
-		//document.getElementById('siegrist').on('plotly_afterplot', function(){document.getElementById("fileToLoad").value = "";document.getElementById("lds-default").style.display = "none";});
 		document.getElementById('siegrist').on('plotly_afterplot', function(){document.getElementById("fileToLoad").value = "";document.getElementById("lds-default").style.display = "none";});
 	}
 	changeclass("boutonQ",true);
