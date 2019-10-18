@@ -6,6 +6,8 @@ Respectueux de la vie priv&eacute;e et de l'anonymat.<br/>
 Open source sous licence MIT.<br/>
 Biblioth&egrave;que open source sous licence MIT : <a href="https://github.com/plotly/plotly.js" target="plotly">plotly.js</a>
 
+<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target="_license"><img alt="Licence Creative Commons" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a> Cette application est mise à disposition selon les termes de la <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target="_licence">Licence Creative Commons Attribution - Pas d’Utilisation Commerciale - Partage dans les Mêmes Conditions 4.0 International</a>.
+
 Fichiers :
 
 <ul>
