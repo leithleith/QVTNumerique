@@ -11,17 +11,25 @@ Biblioth&egrave;que open source sous licence MIT : <a href="https://github.com/p
 Fichiers :
 
 <ul>
+<li>cc.png</li>
+<li>icone192.png</li>
   <li>index.html</li>
 <li>logo.png : affichage en 150px x 100px</li>
-    <li>bibliothèque <a href="https://github.com/plotly/plotly.js" target="plotly">plotly.js</a> : Copyright 2012-2019, Plotly, Inc. All rights reserved. Licensed under the MIT license.</li>
-  <ul>
-  <li>plotly-gl3d.min.js : version modifiée de plotly.js (gl3d - minified) v1.49.1 ;  Modifications pour ne pas afficher "x", "y", ni "z" pour le hoverinfo des points, mais "Soutien" ou "Reconnaissance", "Exigences" et "Autonomie".</li>
-  <code>void 0!==t.zLabel?(void 0!==t.xLabel&&(d+=(r.id == "karasek" ? "Soutien : " : "Reconnaissance : ")+t.xLabel+"<br>"),void 0!==t.yLabel&&(d+="Exigences : "+t.yLabel+"<br>"),"choropleth"!==t.trace.type&&"choroplethmapbox"!==t.trace.type&&(d+=(d?"Autonomie : ":"")+t.zLabel))</code>
-<li>plotly-locale-fr.js : fichier de localisation en français de plotly.js (gl3d - minified) v1.49.1</li>
-  </ul>
-  <li>qvtnumerique.css</li>
-  <li>qvtnumerique.js</li>
-  <li>qvtnumerique.manifest</li>
-  <li>icone192.png</li>
-  <li>sw.js</li>
+<li>logoUFICT.png</li>
+  <li>plotly-gl3d.min.js : version modifiée de <a href="https://github.com/plotly/plotly.js" target="plotly">plotly.js</a> (gl3d - minified) v2.16.5 - Copyright 2012-2019, Plotly, Inc. All rights reserved. Licensed under the MIT license.</li></ul>
+  
+Modification pour ne pas afficher "x", "y", ni "z" pour le hoverinfo des points, mais "Soutien" ou "Reconnaissance", "Exigences" et "Autonomie" :
+<code>void 0!==t.zLabel?(void 0!==t.xLabel&&(l+="x: "+t.xLabel+"<br>"),void 0!==t.yLabel&&(l+="y: "+t.yLabel+"<br>"),"choropleth"!==t.trace.type&&"choroplethmapbox"!==t.trace.type&&(l+=(l?"z: ":"")+t.zLabel))</code>
+<code>void 0!==t.zLabel?(void 0!==t.xLabel&&(l+=(n._container[0].parentNode.id == "karasek" ? "Soutien : " : "Reconnaissance : ")+t.xLabel+"<br>"),void 0!==t.yLabel&&(l+="Exigences : "+t.yLabel+"<br>"),"choropleth"!==t.trace.type&&"choroplethmapbox"!==t.trace.type&&(l+=(l?"Autonomie : ":"")+t.zLabel))</code>
+
+Modification de la palette de couleurs par défaut des marqueurs :
+<code>r.defaults=["#1f77b4","#ff7f0e","#2ca02c","#d62728","#9467bd","#8c564b","#e377c2","#7f7f7f","#bcbd22","#17becf"]</code>
+<code>r.defaults=["#1f77b4","#01dfd7","#0101df","#5b179b","#f781f3","#7f7f7f","#000000","#8a2908","#b2ad7f","#878f99"]</code>
+
+<ul><li>plotly-locale-fr.js : fichier de localisation en français de plotly.js (gl3d - minified) v2.16.5</li>
+<li>qrcodeqvt.png</li>
+<li>qvt.webmanifest</li>
+<li>qvtscript.js</li>
+  <li>qvtstyle.css</li>
+      <li>sw.js</li>
   </ul>
