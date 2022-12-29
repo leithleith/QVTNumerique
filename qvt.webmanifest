@@ -1,0 +1,17 @@
+{
+    "name": "QVTNumérique",
+    "short_name": "QVTNumérique",
+    "description": "Application UGICT-CGT sur la qualité de vie au travail selon les modèles Karasek et Siegrist",
+    "icons": [
+      {
+        "src": "icon192.png",
+        "sizes": "192x192",
+        "type": "image/png"
+      }
+    ],
+    "start_url": "index.html",
+    "display": "fullscreen",
+    "theme_color": "#1e1e1e",
+    "background_color": "#1e1e1e"
+  }
+  
