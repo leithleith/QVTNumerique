@@ -19,8 +19,8 @@ Fichiers :
   <li>plotly-gl3d.min.js : version modifiée de <a href="https://github.com/plotly/plotly.js" target="plotly">plotly.js</a> (gl3d - minified) v2.16.5 - Copyright 2012-2019, Plotly, Inc. All rights reserved. Licensed under the MIT license.</li></ul>
   
 Modification pour ne pas afficher "x", "y", ni "z" pour le hoverinfo des points, mais "Soutien" ou "Reconnaissance", "Exigences" et "Autonomie" :
-<br/><code>void 0!==t.zLabel?(void 0!==t.xLabel&&(l+="x: "+t.xLabel+"<br>"),void 0!==t.yLabel&&(l+="y: "+t.yLabel+"<br>"),"choropleth"!==t.trace.type&&"choroplethmapbox"!==t.trace.type&&(l+=(l?"z: ":"")+t.zLabel))</code>
-<br/><code>void 0!==t.zLabel?(void 0!==t.xLabel&&(l+=(n._container[0].parentNode.id == "karasek" ? "Soutien : " : "Reconnaissance : ")+t.xLabel+"<br>"),void 0!==t.yLabel&&(l+="Exigences : "+t.yLabel+"<br>"),"choropleth"!==t.trace.type&&"choroplethmapbox"!==t.trace.type&&(l+=(l?"Autonomie : ":"")+t.zLabel))</code>
+<p><code>void 0!==t.zLabel?(void 0!==t.xLabel&&(l+="x: "+t.xLabel+"<br>"),void 0!==t.yLabel&&(l+="y: "+t.yLabel+"<br>"),"choropleth"!==t.trace.type&&"choroplethmapbox"!==t.trace.type&&(l+=(l?"z: ":"")+t.zLabel))</code></p>
+<p><code>void 0!==t.zLabel?(void 0!==t.xLabel&&(l+=(n._container[0].parentNode.id == "karasek" ? "Soutien : " : "Reconnaissance : ")+t.xLabel+"<br>"),void 0!==t.yLabel&&(l+="Exigences : "+t.yLabel+"<br>"),"choropleth"!==t.trace.type&&"choroplethmapbox"!==t.trace.type&&(l+=(l?"Autonomie : ":"")+t.zLabel))</code></p>
 
 Modification de la palette de couleurs par défaut des marqueurs :
 <br/><code>r.defaults=["#1f77b4","#ff7f0e","#2ca02c","#d62728","#9467bd","#8c564b","#e377c2","#7f7f7f","#bcbd22","#17becf"]</code>
