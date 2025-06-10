@@ -21,9 +21,10 @@ Fichiers :
 Modification pour ne pas afficher "x", "y", ni "z" pour le hoverinfo des points, mais "Soutien" ou "Reconnaissance", "Exigences" et "Autonomie" :
 <p><code>e.zLabel!==void 0?(e.xLabel!==void 0&&(l+="x: "+e.xLabel+"<br>"),e.yLabel!==void 0&&(l+="y: "+e.yLabel+"<br>"),e.trace.type!=="choropleth"&&e.trace.type!=="choroplethmapbox"&&e.trace.type!=="choroplethmap"&&(l+=(l?"z: ":"")+e.zLabel))</code></p>
 <p><code>e.zLabel!==void 0?(e.xLabel!==void 0&&(l+=(n._container[0].parentNode.id == "karasek" ? "Soutien : " : "Reconnaissance : ")+e.xLabel+"<br>"),e.yLabel!==void 0&&(l+="Exigences : "+e.yLabel+"<br>"),e.trace.type!=="choropleth"&&e.trace.type!=="choroplethmapbox"&&e.trace.type!=="choroplethmap"&&(l+=(l?"Autonomie : ":"")+e.zLabel))</code></p>
+
 Modification de la palette de couleurs par défaut des marqueurs :
-<br/><code>Ml.defaults=["#1f77b4","#ff7f0e","#2ca02c","#d62728","#9467bd","#8c564b","#e377c2","#7f7f7f","#bcbd22","#17becf"]</code>
-<br/><code>Ml.defaults=["#1f77b4","#01dfd7","#0101df","#5b179b","#f781f3","#7f7f7f","#000000","#8a2908","#b2ad7f","#878f99"]</code>
+<p><code>Ml.defaults=["#1f77b4","#ff7f0e","#2ca02c","#d62728","#9467bd","#8c564b","#e377c2","#7f7f7f","#bcbd22","#17becf"]</code></p>
+<p><code>Ml.defaults=["#1f77b4","#01dfd7","#0101df","#5b179b","#f781f3","#7f7f7f","#000000","#8a2908","#b2ad7f","#878f99"]</code></p>
 
 <ul><li>plotly-locale-fr.js : fichier de localisation en français de plotly.js (gl3d - minified) v2.16.5</li>
 <li>qrcodeqvt.png</li>
