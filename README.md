@@ -16,15 +16,14 @@ Fichiers :
   <li>index.html</li>
 <li>logo.png : affichage en 150px x 100px</li>
 <li>logoUFICT.png</li>
-  <li>plotly-gl3d.min.js : version modifiée de <a href="https://github.com/plotly/plotly.js" target="plotly">plotly.js</a> (gl3d - minified) v2.16.5 - Copyright 2012-2019, Plotly, Inc. All rights reserved. Licensed under the MIT license.</li></ul>
+  <li>plotly-gl3d.min.js : version modifiée de <a href="https://github.com/plotly/plotly.js" target="plotly">plotly.js</a> (gl3d - minified) v3.0.1 - Copyright 2012-2025, Plotly, Inc. All rights reserved. Licensed under the MIT license.</li></ul>
   
 Modification pour ne pas afficher "x", "y", ni "z" pour le hoverinfo des points, mais "Soutien" ou "Reconnaissance", "Exigences" et "Autonomie" :
-<p><code>void 0!==t.zLabel?(void 0!==t.xLabel&&(l+="x: "+t.xLabel+"<br>"),void 0!==t.yLabel&&(l+="y: "+t.yLabel+"<br>"),"choropleth"!==t.trace.type&&"choroplethmapbox"!==t.trace.type&&(l+=(l?"z: ":"")+t.zLabel))</code></p>
-<p><code>void 0!==t.zLabel?(void 0!==t.xLabel&&(l+=(n._container[0].parentNode.id == "karasek" ? "Soutien : " : "Reconnaissance : ")+t.xLabel+"<br>"),void 0!==t.yLabel&&(l+="Exigences : "+t.yLabel+"<br>"),"choropleth"!==t.trace.type&&"choroplethmapbox"!==t.trace.type&&(l+=(l?"Autonomie : ":"")+t.zLabel))</code></p>
-
+<p><code>e.zLabel!==void 0?(e.xLabel!==void 0&&(l+="x: "+e.xLabel+"<br>"),e.yLabel!==void 0&&(l+="y: "+e.yLabel+"<br>"),e.trace.type!=="choropleth"&&e.trace.type!=="choroplethmapbox"&&e.trace.type!=="choroplethmap"&&(l+=(l?"z: ":"")+e.zLabel))</code></p>
+<p><code>e.zLabel!==void 0?(e.xLabel!==void 0&&(l+=(n._container[0].parentNode.id == "karasek" ? "Soutien : " : "Reconnaissance : ")+e.xLabel+"<br>"),e.yLabel!==void 0&&(l+="Exigences : "+e.yLabel+"<br>"),e.trace.type!=="choropleth"&&e.trace.type!=="choroplethmapbox"&&e.trace.type!=="choroplethmap"&&(l+=(l?"Autonomie : ":"")+e.zLabel))</code></p>
 Modification de la palette de couleurs par défaut des marqueurs :
-<br/><code>r.defaults=["#1f77b4","#ff7f0e","#2ca02c","#d62728","#9467bd","#8c564b","#e377c2","#7f7f7f","#bcbd22","#17becf"]</code>
-<br/><code>r.defaults=["#1f77b4","#01dfd7","#0101df","#5b179b","#f781f3","#7f7f7f","#000000","#8a2908","#b2ad7f","#878f99"]</code>
+<br/><code>Ml.defaults=["#1f77b4","#ff7f0e","#2ca02c","#d62728","#9467bd","#8c564b","#e377c2","#7f7f7f","#bcbd22","#17becf"]</code>
+<br/><code>Ml.defaults=["#1f77b4","#01dfd7","#0101df","#5b179b","#f781f3","#7f7f7f","#000000","#8a2908","#b2ad7f","#878f99"]</code>
 
 <ul><li>plotly-locale-fr.js : fichier de localisation en français de plotly.js (gl3d - minified) v2.16.5</li>
 <li>qrcodeqvt.png</li>
