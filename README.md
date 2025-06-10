@@ -26,7 +26,7 @@ Modification de la palette de couleurs par défaut des marqueurs :
 <p><code>Ml.defaults=["#1f77b4","#ff7f0e","#2ca02c","#d62728","#9467bd","#8c564b","#e377c2","#7f7f7f","#bcbd22","#17becf"]</code></p>
 <p><code>Ml.defaults=["#1f77b4","#01dfd7","#0101df","#5b179b","#f781f3","#7f7f7f","#000000","#8a2908","#b2ad7f","#878f99"]</code></p>
 
-<ul><li>plotly-locale-fr.js : fichier de localisation en français de plotly.js (gl3d - minified) v2.16.5</li>
+<ul><li>plotly-locale-fr.js : fichier de localisation en français de plotly.js (gl3d - minified) v2.34.0</li>
 <li>qrcodeqvt.png</li>
 <li>qvt.webmanifest</li>
 <li>qvtscript.js</li>
